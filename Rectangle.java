@@ -7,16 +7,15 @@
  */
 public class Rectangle
 {
-    // instance variables - replace the example below with your own
     private Coordinate topLeft;
     private Coordinate bottomRight;
 
     /**
      * Constructor for objects of class Rectangle
      */
-    public Rectangle()
-    {
-  
+    public Rectangle(Coordinate topLeft, Coordinate bottomRight) {
+        this.topLeft = topLeft;
+        this.bottomRight = bottomRight;
     }
 
 }
