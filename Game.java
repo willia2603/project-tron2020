@@ -7,14 +7,12 @@
  */
 public class Game
 {
-    // instance variables - replace the example below with your own
     private int x;
 
     /**
      * Constructor for objects of class Game
      */
-    public Game()
-    {
+    public Game() {
         Player p1 = new Player();
         Player p2 = new Player();
         
@@ -22,6 +20,7 @@ public class Game
             Match match = new Match(p1, p2);
             Player winner = match.play();
             
+            //needs to be changed
             if(p1 == winner){
                 p2.die();
             }else{

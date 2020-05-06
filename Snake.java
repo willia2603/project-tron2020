@@ -7,38 +7,50 @@ import java.util.ArrayList;
  */
 public class Snake
 {
-    // instance variables - replace the example below with your own
-    private ArrayList<Coordinate> body;
+    private ArrayList<Coordinate> body;//AL of rectangles? easier to draw + easier collision detection
     private Direction direction;
-
+    //private int width = 10 width of rectangle in case it gets implemented
+    
     /**
      * Constructor for objects of class Snake
      */
-    public Snake(Direction direction, Coordinate init)
-    {
+    public Snake(Direction direction, Coordinate init) {
         this.direction = direction;
         body = new ArrayList<>();
         body.add(init);
     }
     
-    public Coordinate getHead(){
+    /**
+     * Get the head of the snake.
+     * @return the head of the snake.
+     */
+    public Coordinate getHead() {
         return body.get(body.size() - 1);
     }
     
-    public void nextPosition(){
+    /**
+     * Compute next position.
+     */
+    public void nextPosition() {
         Coordinate prevHead = getHead();
         int newX = prevHead.getX() + direction.actionOnX();
         int newY = prevHead.getY() + direction.actionOnY();
         Coordinate newHead = new Coordinate(newX, newY);
         body.add(newHead);
     }
-
-    public void setDirection(Direction newDirection)
-    {
+    
+    /**
+     * Change direction.
+     */
+    public void setDirection(Direction newDirection) {
         direction = newDirection;
     }
     
-    public ArrayList<Coordinate> getBody(){
+    /**
+     * Get the body of the snake.
+     * @return body of the snake.
+     */
+    public ArrayList<Coordinate> getBody() {
         return body;
     }
 }

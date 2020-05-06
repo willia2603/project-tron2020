@@ -7,17 +7,16 @@
  */
 public class Match
 {
-    // instance variables - replace the example below with your own
     private Player p1;
     private Player p2;
     private float speed = 1;
     private float tickPerSecond = 30;
 
     /**
-     * Constructor for objects of class Match
+     * Constructor for objects of class Match. 
+     * Set up match arena.
      */
-    public Match(Player p1, Player p2)
-    {
+    public Match(Player p1, Player p2) {
         Coordinate p1Coord = new Coordinate(10, 10);
         Coordinate p2Coord = new Coordinate(20, 10);
         Direction p1Dir = new Right();
@@ -28,17 +27,22 @@ public class Match
         p1.setSnake(p1Snake);
         p2.setSnake(p1Snake);
     }
-
-    public Player tick()
-    {
+    
+    /**
+     * Compute the winner of the match. 
+     * @return winner of the match.
+     */
+    public Player tick() {
         // update snake
         p1.getSnake().nextPosition();
         p2.getSnake().nextPosition();
         // check collision
         // todo, check collision between p1 and p2
         // return winner
-        // special case: two heads collides(?)
-        if(p1.checkCollision(p2)){
+        // special case: two heads collides(?) + player collides into  itself + two players collide at the same time somewhere
+        //collision method with head to other body for both players inside snake. if true means both collided at the same time
+        //+ need border of game and check player doesn't collide into it.
+        if (p1.checkCollision(p2)) {
             
         }
         
@@ -46,9 +50,12 @@ public class Match
         return null;
     }
     
-    public Player play()
-    {
-        while(true){
+    /**
+     * Start the match. 
+     * @return winner of the match.
+     */
+    public Player play() {
+        while (true) {
             long tickStart = System.currentTimeMillis();
             // return the winner player when a player wins
             tick();
@@ -56,20 +63,16 @@ public class Match
             
             long ellapsedTime = tickEnd - tickStart;
             long sleep = (long)(1000 / (tickPerSecond * speed)) - ellapsedTime;
-            if(sleep < 0){
+            if (sleep < 0) {
                 sleep = 0;
             }
             
             speed += 0.001;
-            try
-            {
+            try {
                 Thread.sleep(sleep);
-            }
-            catch(InterruptedException ex)
-            {
+            } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
             }
-            
             break; // temp
         }
         return p1;

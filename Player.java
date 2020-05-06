@@ -7,31 +7,42 @@ import java.util.ArrayList;
  */
 public class Player
 {
-    // instance variables - replace the example below with your own
     private Snake snake;
     private int lives;
 
     /**
      * Constructor for objects of class Player
      */
-    public Player()
-    {
+    public Player() {
         lives = 3;
     }
     
-    public void setSnake(Snake snake){
+    /**
+     * Assign snake to player.
+     * @param snake the snake of the player.
+     */
+    public void setSnake(Snake snake) {
         this.snake = snake;
     }
     
-    public Snake getSnake(){
+    /**
+     * restun the snake of the player.
+     * @return the snake of the player.
+     */
+    public Snake getSnake() {
         return snake;
     }
     
-    public boolean checkCollision(Player other){
+    /**
+     * Check if current player collids with another player.
+     * @param player The other player.
+     * @return true if collision happens, false otherwise.
+     */
+    public boolean checkCollision(Player other) {
         Coordinate head = this.snake.getHead();
         ArrayList<Coordinate> otherBody = other.getSnake().getBody();
-        for(Coordinate coord : otherBody){
-            if(head.equals(coord)){
+        for (Coordinate coord : otherBody) {
+            if (head.equals(coord)) {
                 return true;
             }
         }
@@ -39,13 +50,18 @@ public class Player
         return false;
     }
     
-    public void die(){
+    /**
+     * Remove a life from the player.
+     */
+    public void die() {
        lives--; 
     }
     
-    public int getLives(){
+    /**
+     * Get the numbers of lives of a player.
+     * @return the number of lives of the player.
+     */
+    public int getLives() {
         return lives;
     }
-
- 
 }

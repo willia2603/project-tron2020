@@ -5,15 +5,21 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Left extends Direction
+public class Left implements Direction
 {
     /**
-     * Constructor for objects of class Left
+     * Retrun the value of x.
+     * @return value of x. 
      */
-    public int actionOnX(){
+    public int actionOnX() {
         return -1;
     }
-    public int actionOnY(){
+    
+    /**
+     * Retrun the value of y.
+     * @return value of y. 
+     */
+    public int actionOnY() {
         return 0;
     }
 }
