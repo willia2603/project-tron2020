@@ -2,8 +2,8 @@
 /**
  * Write a description of class Coordinate here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Tron2020 Team
+ * @version Alpha
  */
 public class Coordinate
 {
