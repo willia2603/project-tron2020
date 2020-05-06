@@ -18,15 +18,15 @@ public class Player
     }
     
     /**
-     * Assign snake to player.
-     * @param snake the snake of the player.
+     * Assign snake to a player.
+     * @param snake the snake to be set to a player.
      */
     public void setSnake(Snake snake) {
         this.snake = snake;
     }
     
     /**
-     * restun the snake of the player.
+     * return the snake of the player.
      * @return the snake of the player.
      */
     public Snake getSnake() {
@@ -34,15 +34,15 @@ public class Player
     }
     
     /**
-     * Check if current player collids with another player.
-     * @param player The other player.
+     * Check if current player collides with another player.
+     * @param other The other player.
      * @return true if collision happens, false otherwise.
      */
     public boolean checkCollision(Player other) {
         Coordinate head = this.snake.getHead();
         ArrayList<Coordinate> otherBody = other.getSnake().getBody();
-        for (Coordinate coord : otherBody) {
-            if (head.equals(coord)) {
+        for (Coordinate c : otherBody) {
+            if (head.equals(c)) {
                 return true;
             }
         }

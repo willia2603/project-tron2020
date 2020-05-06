@@ -25,7 +25,7 @@ public class Match
         Snake p2Snake = new Snake(p2Dir, p2Coord);
         
         p1.setSnake(p1Snake);
-        p2.setSnake(p1Snake);
+        p2.setSnake(p2Snake);
     }
     
     /**

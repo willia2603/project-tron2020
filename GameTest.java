@@ -11,8 +11,9 @@ import org.junit.Test;
  * @author  (your name)
  * @version (a version number or a date)
  */
-public class GameTest
-{
+public class GameTest {
+
+    Game g;
     /**
      * Default constructor for test class GameTest
      */
@@ -28,6 +29,12 @@ public class GameTest
     @Before
     public void setUp()
     {
+        g = new Game();
+    }
+
+    @Test
+    public void Game() {
+        //TODO
     }
 
     /**

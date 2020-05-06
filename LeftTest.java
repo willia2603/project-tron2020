@@ -11,8 +11,10 @@ import org.junit.Test;
  * @author  (your name)
  * @version (a version number or a date)
  */
-public class LeftTest
-{
+public class LeftTest {
+
+    private Left l;
+
     /**
      * Default constructor for test class LeftTest
      */
@@ -28,6 +30,17 @@ public class LeftTest
     @Before
     public void setUp()
     {
+        l = new Left();
+    }
+
+    @Test
+    public void actionOnX() {
+        assertEquals(-1, l.actionOnX());
+    }
+
+    @Test
+    public void actionOnY() {
+        assertEquals(0, l.actionOnY());
     }
 
     /**

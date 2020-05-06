@@ -8,7 +8,7 @@
 public class Down implements Direction
 {
     /**
-     * Retrun the value of x.
+     * Return the value of x.
      * @return value of x. 
      */
     public int actionOnX() {
@@ -16,7 +16,7 @@ public class Down implements Direction
     }
     
     /**
-     * Retrun the value of y.
+     * Return the value of y.
      * @return value of y. 
      */
     public int actionOnY() {

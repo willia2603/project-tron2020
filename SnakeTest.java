@@ -14,7 +14,9 @@ import org.junit.Test;
 public class SnakeTest
 {
     @Test
-    public void testGetHeadPositive() {}
+    public void testGetHeadPositive() {
+
+    }
     
     @Test
     public void testGetHeadNegative() {}

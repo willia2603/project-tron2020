@@ -11,8 +11,14 @@ import org.junit.Test;
  * @author  (your name)
  * @version (a version number or a date)
  */
-public class MatchTest
-{
+public class MatchTest {
+
+    private Match m1;
+    private Player p1, p2;
+    private Snake s1, s2;
+    private Coordinate c10_10, c20_10;
+
+
     /**
      * Default constructor for test class MatchTest
      */
@@ -28,6 +34,23 @@ public class MatchTest
     @Before
     public void setUp()
     {
+        c20_10 = new Coordinate(20, 10);
+        c10_10 = new Coordinate(10, 10);
+        s1 = new Snake(new Down(), c10_10);
+        s2 = new Snake(new Down(), c20_10);
+        p1.setSnake(s1);
+        p2.setSnake(s2);
+        m1 = new Match(p1, p2);
+    }
+
+    @Test
+    public void tick() {
+        //TODO
+    }
+
+    @Test
+    public void play() {
+        //TODO
     }
 
     /**

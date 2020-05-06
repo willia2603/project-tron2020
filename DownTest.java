@@ -11,8 +11,10 @@ import org.junit.Test;
  * @author  (your name)
  * @version (a version number or a date)
  */
-public class DownTest
-{
+public class DownTest {
+
+    private Down d;
+
     /**
      * Default constructor for test class DownTest
      */
@@ -28,6 +30,17 @@ public class DownTest
     @Before
     public void setUp()
     {
+        d = new Down();
+    }
+
+    @Test
+    public void actionOnX() {
+        assertEquals(0, d.actionOnX());
+    }
+
+    @Test
+    public void actionOnY() {
+        assertEquals(-1, d.actionOnY());
     }
 
     /**

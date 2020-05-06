@@ -1,6 +1,6 @@
 
 /**
- * Abstract class Direction - write a description of the class here
+ * Interface class Direction - write a description of the class here
  *
  * @author (your name here)
  * @version (version number or date here)
