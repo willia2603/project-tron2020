@@ -43,4 +43,28 @@ public class Coordinate
     public boolean equals(Coordinate other) {
         return other.getX() == x && other.getY() == y;
     }
+
+    /**
+     * Temporary Method so I can check the values inside the Coordinate Object.
+     * @return x and y values of a Coordinate Object.
+     */
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Coordinate{");
+        sb.append("x=").append(x);
+        sb.append(", y=").append(y);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    /**
+     * Testing manually the methods from the Snake class.
+     */
+    public static void main(String[] args) {
+        Snake s1 = new Snake(new Right(), new Coordinate(15, 15));
+        System.out.println(s1.getHead());
+        s1.nextPosition();
+        System.out.println(s1.getBody().get(1).getX());
+    }
+
 }

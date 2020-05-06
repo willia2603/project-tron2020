@@ -45,6 +45,10 @@ public class Snake
     public void setDirection(Direction newDirection) {
         direction = newDirection;
     }
+
+    public Direction getDirection() {
+        return direction;
+    }
     
     /**
      * Get the body of the snake.
