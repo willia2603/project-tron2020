@@ -17,5 +17,20 @@ public class Rectangle
         this.topLeft = topLeft;
         this.bottomRight = bottomRight;
     }
-
+    
+    /**
+     * Return the top left coordinate of the rectangle.
+     * @return coordinate of left rectangle.
+     */
+    public Coordinate getTopLeft() {
+        return topLeft;
+    }
+    
+    /**
+     * Return the bottom right coordinate of the rectangle.
+     * @return coordinate of bottom right.
+     */
+    public Coordinate getBottomRight() {
+        return bottomRight;
+    }
 }
