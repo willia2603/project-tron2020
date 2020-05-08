@@ -29,7 +29,7 @@ public class GameTest {
     @Before
     public void setUp()
     {
-        g = new Game();
+        //g = new Game();
     }
 
     @Test

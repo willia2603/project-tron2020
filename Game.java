@@ -5,14 +5,9 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Game
+public abstract class Game
 {
-    private int x;
-
-    /**
-     * Constructor for objects of class Game
-     */
-    public Game() {
+    public static Player newGame(){
         Player p1 = new Player();
         Player p2 = new Player();
         
@@ -26,10 +21,13 @@ public class Game
             }else if(p2 == winner){
                 p1.die();
             }
-            // else, died at the same time (return null)
         }
         
-        // there is a winner of the whole game
-       
+        if(p1.getLives() == 0){
+            return p2;
+        }else{
+            return p1;
+        }
+        
     }
 }

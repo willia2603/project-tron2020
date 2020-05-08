@@ -9,8 +9,7 @@ public class Match
 {
     private Player p1;
     private Player p2;
-    private float speed = 1;
-    private float tickPerSecond = 30;
+    private float speed = Setting.initialSpeed;
 
     /**
      * Constructor for objects of class Match. 
@@ -70,7 +69,7 @@ public class Match
             long tickEnd = System.currentTimeMillis();
             
             long ellapsedTime = tickEnd - tickStart;
-            long sleep = (long)(1000 / (tickPerSecond * speed)) - ellapsedTime;
+            long sleep = (long)(1000 / (Setting.tickPerSecond * speed)) - ellapsedTime;
             if (sleep < 0) {
                 sleep = 0;
             }
