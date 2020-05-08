@@ -38,8 +38,8 @@ public class MatchTest {
         c10_10 = new Coordinate(10, 10);
         s1 = new Snake(new Down(), c10_10);
         s2 = new Snake(new Down(), c20_10);
-        p1.setSnake(s1);
-        p2.setSnake(s2);
+        //p1.setSnake(s1);
+        //p2.setSnake(s2);
         m1 = new Match(p1, p2);
     }
 

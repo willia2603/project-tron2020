@@ -21,21 +21,18 @@ public class Match
         Coordinate p2Coord = new Coordinate(20, 10);
         Direction p1Dir = new Right();
         Direction p2Dir = new Left();
-        Snake p1Snake = new Snake(p1Dir, p1Coord);
-        Snake p2Snake = new Snake(p2Dir, p2Coord);
-        
-        p1.setSnake(p1Snake);
-        p2.setSnake(p2Snake);
+        p1.createSnake(p1Dir, p1Coord);
+        p2.createSnake(p2Dir, p2Coord);
     }
     
     /**
      * Compute the winner of the match. 
      * @return winner of the match.
      */
-    public Player tick() {
+    public int tick() {
         // update snake
-        p1.getSnake().nextPosition();
-        p2.getSnake().nextPosition();
+        p1.nextPosition();
+        p2.nextPosition();
         // check collision
         // todo, check collision between p1 and p2
         // return winner
@@ -46,8 +43,10 @@ public class Match
             
         }
         
+        // 0 -> no collision, -1 -> both collision, 1 -> p1 wins, 2 -> p2 wins
+        
         // draw
-        return null;
+        return -1;
     }
     
     /**
@@ -58,7 +57,16 @@ public class Match
         while (true) {
             long tickStart = System.currentTimeMillis();
             // return the winner player when a player wins
-            tick();
+            int result = tick();
+            switch(result){
+                case -1: 
+                    return null;
+                case 1:
+                    return this.p1;
+                case 2:
+                    return this.p2;
+            }
+            
             long tickEnd = System.currentTimeMillis();
             
             long ellapsedTime = tickEnd - tickStart;
@@ -73,8 +81,6 @@ public class Match
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
             }
-            break; // temp
         }
-        return p1;
     }
 }

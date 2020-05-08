@@ -23,9 +23,10 @@ public class Game
             //needs to be changed
             if(p1 == winner){
                 p2.die();
-            }else{
+            }else if(p2 == winner){
                 p1.die();
             }
+            // else, died at the same time (return null)
         }
         
         // there is a winner of the whole game

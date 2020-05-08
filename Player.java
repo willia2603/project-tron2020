@@ -18,11 +18,11 @@ public class Player
     }
     
     /**
-     * Assign snake to a player.
+     * 
      * @param snake the snake to be set to a player.
      */
-    public void setSnake(Snake snake) {
-        this.snake = snake;
+    public void createSnake(Direction direction, Coordinate init) {
+        this.snake = new Snake(direction, init);
     }
     
     /**
@@ -48,6 +48,38 @@ public class Player
         }
         
         return false;
+    }
+    
+    public void nextPosition() {
+        this.snake.nextPosition();
+    }
+    
+    /**
+     * Make player turn left.
+     */
+    public void goLeft() {
+        Direction dir = new Left();
+    }
+    
+    /**
+     * Make player turn right.
+     */
+    public void goRight() {
+        Direction dir = new Right();
+    }
+    
+    /**
+     * Make player turn right.
+     */
+    public void goUp() {
+        Direction dir = new Up();
+    }
+    
+    /**
+     * Make player turn right.
+     */
+    public void goDown() {
+        Direction dir = new Down();
     }
     
     /**

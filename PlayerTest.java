@@ -39,8 +39,8 @@ public class PlayerTest {
         s2 = new Snake(new Down(), c20_10);
         p1 = new Player();
         p2 = new Player();
-        p1.setSnake(s1);
-        p2.setSnake(s2);
+        //p1.setSnake(s1);
+        //p2.setSnake(s2);
     }
 
     @Test
