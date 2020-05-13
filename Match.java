@@ -32,20 +32,25 @@ public class Match
         // update snake
         p1.nextPosition();
         p2.nextPosition();
-        // check collision
-        // todo, check collision between p1 and p2
-        // return winner
-        // special case: two heads collides(?) + player collides into  itself + two players collide at the same time somewhere
-        //collision method with head to other body for both players inside snake. if true means both collided at the same time
-        //+ need border of game and check player doesn't collide into it.
-        if (p1.checkCollision(p2)) {
-            
+        
+        //need border of game and check player doesn't collide into it.
+        //check collisions: head-head, self-self, p1-p2
+        //Note: checkCollision takes care of head-head collision + p1 p2 collision
+        boolean dead1 = p1.checkCollision(p2) || p1.checkCollisionSelf();
+        boolean dead2 = p2.checkCollision(p1) || p2.checkCollisionSelf();
+        
+        // 0 -> no collision, start new tick, -1 -> both collision, 1 -> p1 wins, 2 -> p2 wins
+        if (dead1 && dead2) {
+            return -1;
         }
-        
-        // 0 -> no collision, -1 -> both collision, 1 -> p1 wins, 2 -> p2 wins
-        
+        if (dead2) {
+            return 1;
+        }
+        if (dead1) {
+            return 2;
+        }
         // draw
-        return -1;
+        return 0;
     }
     
     /**

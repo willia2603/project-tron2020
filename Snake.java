@@ -7,9 +7,8 @@ import java.util.ArrayList;
  */
 public class Snake
 {
-    private ArrayList<Coordinate> body;//AL of rectangles? easier to draw + easier collision detection
+    private ArrayList<Coordinate> body;
     private Direction direction;
-    //private int width = 10 width of rectangle in case it gets implemented
     
     /**
      * Constructor for objects of class Snake

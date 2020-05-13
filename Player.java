@@ -46,7 +46,23 @@ public class Player
                 return true;
             }
         }
-        
+        return false;
+    }
+    
+    /**
+     * Check I collide into myself.
+     * @return true if collision happens, false otherwise.
+     */
+    public boolean checkCollisionSelf() {
+        Coordinate head = this.snake.getHead();
+        ArrayList<Coordinate> myBody = this.getSnake().getBody();
+        // remove head
+        myBody.remove(myBody.size() - 1);
+        for (Coordinate c : myBody) {
+            if (head.equals(c)) {
+                return true;
+            }
+        }
         return false;
     }
     

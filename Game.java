@@ -15,7 +15,7 @@ public abstract class Game
             Match match = new Match(p1, p2);
             Player winner = match.play();
             
-            //needs to be changed
+            //if winner ==  null just start over
             if(p1 == winner){
                 p2.die();
             }else if(p2 == winner){
