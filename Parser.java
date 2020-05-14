@@ -30,7 +30,7 @@ public class Parser
 
         // Find up to two words on the line.
         Scanner tokenizer = new Scanner(inputLine);
-        if(tokenizer.hasNext()) {
+        if (tokenizer.hasNext()) {
             userCommand = tokenizer.next(); 
         }
 

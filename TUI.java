@@ -29,7 +29,7 @@ public class TUI
         System.out.println("Thank you for riding.  Good bye.");
     }
     
-    private boolean processCommand(MenuCommand command){
+    private boolean processCommand(MenuCommand command) {
         boolean wantToQuit = false;
         switch (command) {
             case UNKNOWN:
@@ -50,8 +50,8 @@ public class TUI
         return wantToQuit;
     }
     
-    private void play(){
-        
+    private void play() {
+        // Game.newGame();
     }
     
      /**

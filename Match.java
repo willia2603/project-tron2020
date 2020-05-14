@@ -5,11 +5,10 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Match
+public abstract class Match
 {
-    private Player p1;
-    private Player p2;
-    private float speed = Setting.initialSpeed;
+    protected Player p1;
+    protected Player p2;
 
     /**
      * Constructor for objects of class Match. 
@@ -23,16 +22,18 @@ public class Match
         p1.createSnake(p1Dir, p1Coord);
         p2.createSnake(p2Dir, p2Coord);
     }
+   
+    public abstract int tick();
     
-    /**
-     * Compute the winner of the match. 
-     * @return winner of the match.
-     */
-    public int tick() {
-        // update snake
+    public abstract Player play();
+    
+    
+    protected void updateSnake(){
         p1.nextPosition();
         p2.nextPosition();
-        
+    }
+    
+    protected int checkCollision(){
         //need border of game and check player doesn't collide into it.
         //check collisions: head-head, self-self, p1-p2
         //Note: checkCollision takes care of head-head collision + p1 p2 collision
@@ -51,40 +52,5 @@ public class Match
         }
         // draw
         return 0;
-    }
-    
-    /**
-     * Start the match. 
-     * @return winner of the match.
-     */
-    public Player play() {
-        while (true) {
-            long tickStart = System.currentTimeMillis();
-            // return the winner player when a player wins
-            int result = tick();
-            switch(result){
-                case -1: 
-                    return null;
-                case 1:
-                    return this.p1;
-                case 2:
-                    return this.p2;
-            }
-            
-            long tickEnd = System.currentTimeMillis();
-            
-            long ellapsedTime = tickEnd - tickStart;
-            long sleep = (long)(1000 / (Setting.tickPerSecond * speed)) - ellapsedTime;
-            if (sleep < 0) {
-                sleep = 0;
-            }
-            
-            speed += 0.001;
-            try {
-                Thread.sleep(sleep);
-            } catch (InterruptedException ex) {
-                Thread.currentThread().interrupt();
-            }
-        }
     }
 }

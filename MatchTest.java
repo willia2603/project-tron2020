@@ -40,7 +40,7 @@ public class MatchTest {
         s2 = new Snake(new Down(), c20_10);
         //p1.setSnake(s1);
         //p2.setSnake(s2);
-        m1 = new Match(p1, p2);
+        // m1 = new Match(p1, p2);
     }
 
     @Test

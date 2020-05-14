@@ -23,7 +23,7 @@ public enum MatchCommand
         this.direction = direction;
     }
     
-    public Direction getDirection(){
+    public Direction getDirection() {
         return this.direction;
     }
     
