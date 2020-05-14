@@ -15,6 +15,8 @@ public abstract class Match
      * Set up match arena.
      */
     public Match(Player p1, Player p2) {
+        this.p1 = p1;
+        this.p2 = p2;
         Coordinate p1Coord = new Coordinate(10, 10);
         Coordinate p2Coord = new Coordinate(20, 10);
         Direction p1Dir = new Right();

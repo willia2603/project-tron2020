@@ -50,11 +50,7 @@ public class Coordinate
      */
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Coordinate{");
-        sb.append("x=").append(x);
-        sb.append(", y=").append(y);
-        sb.append('}');
-        return sb.toString();
+        return "(" + x + ", " + y + ")";
     }
 
     /**

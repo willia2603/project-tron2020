@@ -51,7 +51,8 @@ public class TUI
     }
     
     private void play() {
-        // Game.newGame();
+        Game textGame = new TextGame();
+        textGame.play();
     }
     
      /**

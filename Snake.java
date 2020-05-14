@@ -56,4 +56,11 @@ public class Snake
     public ArrayList<Coordinate> getBody() {
         return body;
     }
+    
+    public void print(){
+        for(Coordinate coor : body){
+            System.out.print(coor + " ");
+        }
+        System.out.println();
+    }
 }

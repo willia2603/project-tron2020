@@ -24,7 +24,17 @@ public class TextGame extends Game
             
             this.alive(winner);
         }
+        Player gameWinner = this.gameWinner();
         
-        return this.gameWinner();
+        String winnerString;
+        if(gameWinner == this.p1){
+            winnerString = "Player 1";
+        }else{
+            winnerString = "Player 2";
+        }
+        
+        System.out.println("And the winner is.... " + winnerString);
+        
+        return gameWinner;
     }
 }

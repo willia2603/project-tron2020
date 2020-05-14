@@ -57,8 +57,9 @@ public class Player
         Coordinate head = this.snake.getHead();
         ArrayList<Coordinate> myBody = this.getSnake().getBody();
         // remove head
-        myBody.remove(myBody.size() - 1);
-        for (Coordinate c : myBody) {
+        //myBody.remove(myBody.size() - 1);
+        for (int i = 0; i < myBody.size() - 1; i++) {
+            Coordinate c = myBody.get(i);
             if (head.equals(c)) {
                 return true;
             }
@@ -111,5 +112,9 @@ public class Player
      */
     public int getLives() {
         return lives;
+    }
+    
+    public void printSnake(){
+        snake.print();
     }
 }
