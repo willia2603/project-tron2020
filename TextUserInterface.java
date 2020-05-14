@@ -5,15 +5,7 @@ import java.util.Scanner;
  */
 public class TextUserInterface {
     private Scanner command = new Scanner(System.in);
-
-    /**
-     * Default command getter.
-     * @return command.
-     */
-    public Scanner getCommand() {
-        return command;
-    }
-
+    
     /**
      * From the course textbook Chapter 8.
      * Available user commands.
@@ -22,6 +14,14 @@ public class TextUserInterface {
             "start", "help", "quit"
     };
 
+    /**
+     * Default command getter.
+     * @return command.
+     */
+    public Scanner getCommand() {
+        return command;
+    }
+    
     /**
      * From the course textbook Chapter 8.
      * Iterates through a list of possible valid commands.
@@ -35,7 +35,8 @@ public class TextUserInterface {
         }
         return false;
     }
-
+    //read stdin to get commands
+    // gets command and changed play and tick accoprdingly 
     /**
      * Prints a message for now, will start the game later.
      */
