@@ -10,6 +10,8 @@ public class nMatch {
          * Set up match arena.
          */
     public nMatch(nPlayer p1, nPlayer p2) {
+        this.p1 = p1;
+        this.p2 = p2;
         Coordinate p1C = new Coordinate(10, 10);
         Coordinate p2C = new Coordinate(12, 10);
         Direction p1Dir = new Right();
