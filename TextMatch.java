@@ -14,18 +14,7 @@ public class TextMatch extends Match
         parser = new Parser();
     }
     
-    /**
-     * Compute the winner of the match. 
-     * @return winner of the match.
-     */
-    public int tick() {
-        // update snake
-        this.updateSnake();
-        
-        int result = this.checkCollision();
-        
-        return result;
-    }
+    
     
     private void processCommand(MenuCommand command, Player player) {
         // boolean wantToQuit = false;
@@ -56,33 +45,5 @@ public class TextMatch extends Match
         //processCommand(commandP2, p2);
     }
    
-    /**
-     * Start the match. 
-     * @return winner of the match.
-     */
-    public Player play() {
-        while (true) {
-            //print body of snake so players know where to move next
-            p1.printSnake();
-            p2.printSnake();
-            
-            // read command
-            // todo want to quit
-            updateSnakeDirection();
-            
-            int result = tick();
-            switch(result){
-                case -1: 
-                    System.out.println("You died at the same time.");
-                    return null;
-                case 1:
-                    System.out.println("Match won by Player 1");
-                    return this.p1;
-                case 2:
-                    System.out.println("Match won by Player 2");
-                    return this.p2;
-            }
-            
-        }
-    }
+    
 }

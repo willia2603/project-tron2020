@@ -71,32 +71,9 @@ public class Player
         this.snake.nextPosition();
     }
     
-    /**
-     * Make player turn left.
-     */
-    public void goLeft() {
-        Direction dir = new Left();
-    }
-    
-    /**
-     * Make player turn right.
-     */
-    public void goRight() {
-        Direction dir = new Right();
-    }
-    
-    /**
-     * Make player turn right.
-     */
-    public void goUp() {
-        Direction dir = new Up();
-    }
-    
-    /**
-     * Make player turn right.
-     */
-    public void goDown() {
-        Direction dir = new Down();
+    public void turnLeft() {
+        //figureout where to turn
+        //look at directin, change direction accrodingly
     }
     
     /**

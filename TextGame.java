@@ -16,25 +16,5 @@ public class TextGame extends Game
     }
 
 
-    public Player play()
-    {
-        while(this.continueGame()){
-            Match match = new TextMatch(this.p1, this.p2);
-            Player winner = match.play();
-            
-            this.alive(winner);
-        }
-        Player gameWinner = this.gameWinner();
-        
-        String winnerString;
-        if(gameWinner == this.p1){
-            winnerString = "Player 1";
-        }else{
-            winnerString = "Player 2";
-        }
-        
-        System.out.println("And the winner is.... " + winnerString);
-        
-        return gameWinner;
-    }
+    
 }
