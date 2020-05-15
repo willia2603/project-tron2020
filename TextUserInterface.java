@@ -5,13 +5,17 @@ import java.util.Scanner;
  */
 public class TextUserInterface {
     private Scanner command = new Scanner(System.in);
-    
+
     /**
      * From the course textbook Chapter 8.
      * Available user commands.
      */
     private static final String[] validCommands = {
             "start", "help", "quit"
+    };
+
+    private static final String[] playerCommands = {
+            "up", "down", "left", "right", "quit"
     };
 
     /**
@@ -35,17 +39,13 @@ public class TextUserInterface {
         }
         return false;
     }
-    //read stdin to get commands
-    // gets command and changed play and tick accoprdingly 
+
     /**
      * Prints a message for now, will start the game later.
      */
     public void printStart()
     {
         System.out.println("New Game Starts");
-        //TODO
-        // we need to find a way to print the elapsed time every time
-        // a Tick() happens
     }
 
     /**
@@ -53,10 +53,10 @@ public class TextUserInterface {
      */
     public void printHelp()
     {
-        System.out.println("Use the arrow keys to move around the board");
-        System.out.println("Each player has 3 lives, game ends when one reaches 0 lives");
         System.out.println("Start command starts a new game");
         System.out.println("Quit command terminates this program");
+        System.out.println("Use the arrow keys to move around the board");
+        System.out.println("Each player has 3 lives, game ends when one reaches 0 lives");
     }
 
     /**
@@ -73,5 +73,18 @@ public class TextUserInterface {
      */
     public String printDefault() {
         return "The commands are: \"start\", \"help\", \"quit\". " + "You typed: ";
+    }
+
+    public String printPlayerDefault() {
+        return "The commands are: \"up\", \"down\", \"left\", \"right\", \"quit\". " + "You typed: ";
+    }
+
+    public boolean checkPlayerCommand(String str) {
+        for (String s : playerCommands) {
+            if (s.equals(str)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

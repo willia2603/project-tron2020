@@ -13,9 +13,9 @@ import org.junit.Test;
  */
 public class PlayerTest {
 
-    Coordinate c10_10, c20_10;
+    Coordinate c10_10, c20_10, c18_10;
     Snake s1, s2;
-    Player p1, p2;
+    Player p1, p2, p3, p4;
 
 
     /**
@@ -35,26 +35,37 @@ public class PlayerTest {
     {
         c10_10 = new Coordinate(10, 10);
         c20_10 = new Coordinate(20, 10);
-        s1 = new Snake(new Up(), c10_10);
-        s2 = new Snake(new Down(), c20_10);
+        c18_10 = new Coordinate(19, 10);
         p1 = new Player();
         p2 = new Player();
-        //p1.setSnake(s1);
-        //p2.setSnake(s2);
+        p3 = new Player();
+        p4 = new Player();
+        p1.createSnake(new Up(), c10_10);
+        p2.createSnake(new Down(), c20_10);
+        p3.createSnake(new Down(), c20_10);
+        p4.createSnake(new Up(), c18_10);
+        s1 = new Snake(new Up(), c10_10);
+        s2 = new Snake(new Down(), c20_10);
     }
 
     @Test
-    public void getSnake() {
-        assertEquals(s1, p1.getSnake());
-        assertNotEquals(s2, p1.getSnake());
-        assertEquals(s2, p2.getSnake());
-        assertNotEquals(s1, p2.getSnake());
+    public void checkCollisionSelf() {
+        p1.checkCollisionSelf();
     }
 
     @Test
     public void checkCollision() {
-        //TODO
+        assertFalse(p1.checkCollision(p2));
+        assertTrue(p1.checkCollision(p1));
+        assertTrue(p2.checkCollision(p3));
+        assertTrue(p3.checkCollision(p2));
+//        p3.Act("left");
+//        p4.Act("right");
+//        assertTrue(p3.checkCollision(p4));
+//        assertTrue(p4.checkCollision(p3));
     }
+
+
 
     @Test
     public void die() {
