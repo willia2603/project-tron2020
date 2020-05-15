@@ -48,12 +48,13 @@ public class Main {
                                         + ") " + "p2: (" + p2.getSnake().getHead().getX() + ", " + p2.getSnake().getHead().getY() + ")");
 
                                 // #----- Above this is the collision part, I tried with two different approaches, Match happens to get
-                                //        a null pointer exception, I will be doing debugging to see if I and understand why it's happening.
+                                //        a null pointer exception, I will be doing debugging to see if I understand why it's happening.
                                 //        It's important to find out to properly implement all cases of collision -----#
 
                                 if (p1.checkCollision(p2) || p1.checkCollisionSelf()) {
                                     p1.die();
                                     System.out.println("p1 lost this round. p1 lives = " + p1.getLives());
+                                    // resetting both players position to the default position of a match
                                     p1.createSnake(new Left(), new Coordinate(10, 10));
                                     p2.createSnake(new Right(), new Coordinate(12, 10));
                                 } else if (p2.checkCollision(p1) || p2.checkCollisionSelf()) {
@@ -81,6 +82,7 @@ public class Main {
                                 System.out.println(input.printPlayerDefault() + "\"" + commands[0] + " " + commands[1] + "\"");
                             }
                         }
+                        // you reach this section when one of the players has no more lives left. Print the winner.
                         System.out.println("\nThe winner is: " + p1.victorious(p2) + "!");
                         b = false;
                         break;
@@ -101,6 +103,3 @@ public class Main {
         }
     }
 }
-//        final Model model = new Model();
-//        final TextUserInterface tui = new TextUserInterface(model);
-//        tui.run();
