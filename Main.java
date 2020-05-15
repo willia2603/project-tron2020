@@ -53,10 +53,10 @@ public class Main {
 
                                 if (p1.checkCollision(p2) || p1.checkCollisionSelf()) {
                                     p1.die();
-                                    System.out.println("p1 lost this round. p1 lives = " + p1.getLives());
                                     // resetting both players position to the default position of a match
                                     p1.createSnake(new Left(), new Coordinate(10, 10));
                                     p2.createSnake(new Right(), new Coordinate(12, 10));
+                                    System.out.println("p1 lost this round. p1 lives = " + p1.getLives());
                                 } else if (p2.checkCollision(p1) || p2.checkCollisionSelf()) {
                                     p2.die();
                                     p1.createSnake(new Left(), new Coordinate(10, 10));
