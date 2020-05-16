@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 public class Snake
 {
+    //head is last element of AL
     private ArrayList<Coordinate> body;
     private Direction direction;
     

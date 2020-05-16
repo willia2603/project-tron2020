@@ -20,6 +20,6 @@ public class Down implements Direction
      * @return value of y. 
      */
     public int actionOnY() {
-        return -1;
+        return 1;
     }
 }

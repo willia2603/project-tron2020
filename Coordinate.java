@@ -43,5 +43,10 @@ public class Coordinate
     public boolean equals(Coordinate other) {
         return other.getX() == x && other.getY() == y;
     }
+    
+    @Override
+    public String toString(){
+        return "(" + this.getX() + "," + this.getY() + ")";
+    }
 
 }

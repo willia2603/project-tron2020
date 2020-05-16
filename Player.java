@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 /**
  * Write a description of class Player here.
  *
@@ -9,12 +10,14 @@ public class Player
 {
     private Snake snake;
     private int lives;
+    private String name;
 
     /**
      * Constructor for objects of class Player
      */
-    public Player() {
+    public Player(String name) {
         lives = 3;
+        this.name = name;
     }
     
     /**
@@ -71,32 +74,36 @@ public class Player
         this.snake.nextPosition();
     }
     
-    /**
-     * Make player turn left.
-     */
-    public void goLeft() {
-        Direction dir = new Left();
+    public void turnLeft() {
+        Direction dir = this.snake.getDirection();
+        if(dir instanceof Left){
+            this.snake.setDirection(new Down());
+        }else if(dir instanceof Down){
+            this.snake.setDirection(new Right());
+        }else if(dir instanceof Right){
+            this.snake.setDirection(new Up());
+        }else if(dir instanceof Up){
+            this.snake.setDirection(new Left());
+        }
+        
+        //fallo anche per le altredirezioni
+        //figureout where to turn
+        //look at directin, change direction accrodingly
     }
     
-    /**
-     * Make player turn right.
-     */
-    public void goRight() {
-        Direction dir = new Right();
-    }
-    
-    /**
-     * Make player turn right.
-     */
-    public void goUp() {
-        Direction dir = new Up();
-    }
-    
-    /**
-     * Make player turn right.
-     */
-    public void goDown() {
-        Direction dir = new Down();
+    public void turnRight() {
+        Direction dir = this.snake.getDirection();
+        if(dir instanceof Left){
+            this.snake.setDirection(new Up());
+        }else if(dir instanceof Up){
+            this.snake.setDirection(new Right());
+        }else if(dir instanceof Right){
+            this.snake.setDirection(new Down());
+        }else if(dir instanceof Down){
+            this.snake.setDirection(new Left());
+        }
+        //figureout where to turn
+        //look at directin, change direction accrodingly
     }
     
     /**
@@ -117,4 +124,10 @@ public class Player
     public void printSnake(){
         snake.print();
     }
+    
+        @Override
+    public String toString(){
+        return this.name;
+    }
+    
 }

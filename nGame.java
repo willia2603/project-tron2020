@@ -8,8 +8,8 @@ public class nGame {
     protected Player p2;
 
     public nGame(){
-        p1 = new Player();
-        p2 = new Player();
+        p1 = new Player("player1");
+        p2 = new Player("player2");
     }
 
 //    public abstract Player play();
