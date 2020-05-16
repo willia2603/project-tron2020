@@ -1,5 +1,5 @@
 
-
+import java.util.ArrayList;
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
@@ -52,5 +52,20 @@ public class SnakeTest {
         Snake s1 = new Snake(new Left(), new Coordinate(10, 10));
         s1.setDirection(r);
         assertEquals(r, s1.getDirection());
+    }
+    
+    @Test
+    public void testGetDirection() {
+        Snake s1 = new Snake(new Up(), new Coordinate(10, 10));
+        assertTrue(s1.getDirection() instanceof Up);
+    }
+    
+    @Test
+    public void testGetBody() {
+        Snake s1 = new Snake(new Up(), new Coordinate(10, 10));
+        Snake s2 = new Snake(new Up(), new Coordinate(10, 10));
+        ArrayList<Coordinate> body1 = s1.getBody();
+        ArrayList<Coordinate> body2 = s2.getBody();
+        assertEquals(body1, body2);
     }
 }

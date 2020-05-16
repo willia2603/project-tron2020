@@ -40,16 +40,7 @@ public class DownTest {
 
     @Test
     public void actionOnY() {
-        assertEquals(-1, d.actionOnY());
+        assertEquals(1, d.actionOnY());
     }
 
-    /**
-     * Tears down the test fixture.
-     *
-     * Called after every test case method.
-     */
-    @After
-    public void tearDown()
-    {
-    }
 }

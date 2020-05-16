@@ -8,10 +8,10 @@ import java.util.ArrayList;
  */
 public class Game
 {
-    ArrayList<GameListener> listeners;
-    ArrayList<Command> commands;
-    protected Player p1;
-    protected Player p2;
+    private ArrayList<GameListener> listeners;
+    private ArrayList<Command> commands;
+    private final Player p1;
+    private final Player p2;
     
     /**
      * Constructor for objects of class Game.
@@ -80,7 +80,7 @@ public class Game
      * Continue game according to number of lives.
      * @return true if both players have at least 1 life, false otherwise.
      */
-    protected boolean continueGame(){
+    public boolean continueGame(){
         return p1.getLives() > 0 && p2.getLives() > 0;
     }
     
@@ -102,5 +102,26 @@ public class Game
         
         Player gameWinner = this.gameWinner();
         return gameWinner;
+    }
+    
+     /**
+     * Register list of listeners (needed for testing).
+     */
+    public ArrayList<GameListener> returnListeners() {
+        return this.listeners;
+    }
+    
+     /**
+     * Get players of game (needed for testing).
+     */
+    public Player getPlayer(String name) {
+        if (name.equals(p1.toString())) {
+            return this.p1;
+        }
+        if (name.equals(p2.toString())) {
+            return this.p2;
+        } else {
+            return null;
+        }
     }
 }
