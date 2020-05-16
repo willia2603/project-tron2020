@@ -76,7 +76,7 @@ public class TextUserInterface {
     }
 
     public String printPlayerDefault() {
-        return "The commands are: \"up\", \"down\", \"left\", \"right\", \"quit\". " + "You typed: ";
+        return "The commands are: \"up\", \"down\", \"left\", \"right\", \"quit\". i.e: down left. You Typed: ";
     }
 
     public boolean checkPlayerCommand(String str) {
