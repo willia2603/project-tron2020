@@ -1,6 +1,12 @@
-# PF2 Programming Project
+------------------------------------------------------------------------
+This is the project README file. Here, you should describe your project.
+Tell the reader (someone who does not know anything about this project)
+all he/she needs to know. The comments should usually include at least:
+------------------------------------------------------------------------
 
-This is a starter repository for the programming project in PF2.
-
-Please add your own README contents describing your project
-(what it is, how to use it, how to extend it).
+PROJECT TITLE:
+PURPOSE OF PROJECT:
+VERSION or DATE:
+HOW TO START THIS PROJECT:
+AUTHORS:
+USER INSTRUCTIONS:

@@ -1,11 +1,12 @@
 
 /**
- * Write a description of class GameListener here.
+ * Write a description of interface GameListener here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
 public interface GameListener
 {
-    void showWinner(Game game);
+    void beforeMatch(Match match);
+    void afterMatch(Player player, Match match);
 }
