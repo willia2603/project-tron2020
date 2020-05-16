@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class Parser
 {
     private Scanner reader;
+    
 
     /**
      * Constructor for objects of class Parser

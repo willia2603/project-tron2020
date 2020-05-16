@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class TUI implements MatchListener, GameListener
 {
     private Parser parser;
-    private final String[] menuCommands = {"help", "play", "quit"};
 
     public TUI()
     {
@@ -30,13 +29,18 @@ public class TUI implements MatchListener, GameListener
                 return true;
                 
             default:
-                System.out.println("I don't know what you mean...");
+                System.out.println("commands are: 'quit', 'help', 'play'");
                 break;
         }
         return false;
     }
     
     private Command processCommandMatch(String userCommand, Player player) {
+        //if one of the two words is null, make snake go straight
+        if (userCommand == null) {
+            userCommand = "continue";
+        }
+        
         switch (userCommand) {
             case "left":
                 return new TurnLeft(player);
@@ -48,7 +52,7 @@ public class TUI implements MatchListener, GameListener
                 return new Continue(player);
                 
             default:
-                System.out.println("I don't know what you mean...");
+                System.out.println("The commands are: 'right', 'left'");
                 return null;
         }
     }
@@ -59,19 +63,21 @@ public class TUI implements MatchListener, GameListener
     private void printHelp()
     {
         System.out.println("Each player has 3 lives, game ends when one reaches 0 lives");
-        System.out.println("Play starts a new game");
-        //System.out.println("\"" + MenuCommand.QUIT.toString() + "\" terminates this program");
+        System.out.println("'play' starts a new game");
+        System.out.println("'quit' terminates this program");
+        System.out.println("after 'play', use 'right' 'left'or 'continue' to move each player");
+        System.out.println();
     }
     
     private void printWelcome() {
         System.out.println();
         System.out.println("Welcome to Tron2020!");
         System.out.print("The commands are: ");
-        //parser.showCommands();
+        System.out.print("help play quit");
         System.out.println();
     }
     
-    public void showWinner(Player winner){
+    private void showWinner(Player winner) {
        System.out.println("The winner is: " + winner.toString());
     }
     
@@ -97,29 +103,30 @@ public class TUI implements MatchListener, GameListener
         System.out.println("Thank you for riding. Good bye.");
     }
     
-    public void readMatchCommand(Match match) {
+    private void readMatchCommand(Match match) {
         ArrayList<Player> players = match.returnPlayers();
         Command commandP1;
         Command commandP2;
         
-        do{
+        do {
             System.out.println("Where do you want to go?");
             String[] commands = parser.getCommand();
             String word1 = commands[0];
             String word2 = commands[1];
-            // todo: if write only 1 word, words2 is null and null pointer exception
+            //case where ne of the two words is null:
+            //if word is null, just go straight (see processCommandMenu)
             commandP1 = processCommandMatch(word1, players.get(0));
             commandP2 = processCommandMatch(word2, players.get(1));
-        }while(commandP1 == null || commandP2 == null);
+        } while (commandP1 == null || commandP2 == null);
         
         match.addCommand(commandP1);
         match.addCommand(commandP2);
     }
     
-    public void beforeTick(Match match){
+    public void beforeTick(Match match) {
         ArrayList<Player> players = match.returnPlayers();
         // print snake
-        for(Player player : players){
+        for (Player player : players) {
             System.out.print(player.toString() + ": ");
             player.printSnake();
         }
@@ -128,16 +135,16 @@ public class TUI implements MatchListener, GameListener
         readMatchCommand(match);
     }
     
-    public void beforeMatch(Match match){
+    public void beforeMatch(Match match) {
         //register TUI into match
         match.registerListener(this);
     }
     
-    public void afterMatch(Player winner, Match match){
+    public void afterMatch(Player winner, Match match) {
         System.out.println("Winner: " + winner.toString());
         
         ArrayList<Player> players = match.returnPlayers();
-        for(Player player : players){
+        for (Player player : players) {
             System.out.println(player.toString() + " has " + player.getLives() + " lives.");
         }
     }
