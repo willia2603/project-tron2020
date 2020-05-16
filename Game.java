@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class Game
 {
     private ArrayList<GameListener> listeners;
-    private ArrayList<Command> commands;
     private final Player p1;
     private final Player p2;
     
@@ -18,7 +17,6 @@ public class Game
      */
     public Game(){
         this.listeners = new ArrayList<>();
-        this.commands = new ArrayList<>();
         p1 = new Player("Player 1");
         p2 = new Player("Player 2");
     }
@@ -71,7 +69,7 @@ public class Game
     protected void alive(Player player){
         if (p1 == player) {
             p2.die();
-        } else if (p1 == player) {
+        } else if (p2 == player) {
             p1.die();
         }
     }

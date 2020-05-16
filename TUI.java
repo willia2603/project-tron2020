@@ -23,7 +23,7 @@ public class TUI implements MatchListener, GameListener
      * @param userCommand the command given by user.
      * @return true if player wants to quit, false otherwise.
      */
-    private boolean processCommandMenu(String userCommand) {
+    private boolean processCommandMenu(final String userCommand) {
         switch (userCommand) {
             case "help":
                 printHelp();
@@ -49,7 +49,7 @@ public class TUI implements MatchListener, GameListener
      * @param player the player that needs to act.
      * @return command associated with userCommand.
      */
-    private Command processCommandMatch(String userCommand, Player player) {
+    private Command processCommandMatch(String userCommand, final Player player) {
         //if one of the two words is null, make snake go straight
         if (userCommand == null) {
             userCommand = "continue";
@@ -97,7 +97,7 @@ public class TUI implements MatchListener, GameListener
     /**
     * Print winner of game.
     */
-    private void showWinner(Player winner) {
+    private void showWinner(final Player winner) {
        System.out.println("The winner is: " + winner.toString());
     }
     
@@ -105,10 +105,10 @@ public class TUI implements MatchListener, GameListener
     * Start the game.
     */
     private void play() {
-        Game game = new Game();
+        final Game game = new Game();
         //register TUI into game
         game.registerListener(this);
-        Player winner = game.play();
+        final Player winner = game.play();
         
         showWinner(winner);
     }
@@ -122,7 +122,7 @@ public class TUI implements MatchListener, GameListener
         
         boolean finished = false;
         while (! finished) {
-            String[] commands = parser.getCommand();
+            final String[] commands = parser.getCommand();
             finished = processCommandMenu(commands[0]);
         }
         
@@ -133,16 +133,16 @@ public class TUI implements MatchListener, GameListener
     * Read the user commands when playing the match.
     * @param the current match.
     */
-    private void readMatchCommand(Match match) {
-        ArrayList<Player> players = match.returnPlayers();
+    private void readMatchCommand(final Match match) {
+        final ArrayList<Player> players = match.returnPlayers();
         Command commandP1;
         Command commandP2;
         
         do {
             System.out.println("Where do you want to go?");
-            String[] commands = parser.getCommand();
-            String word1 = commands[0];
-            String word2 = commands[1];
+            final String[] commands = parser.getCommand();
+            final String word1 = commands[0];
+            final String word2 = commands[1];
             //case where ne of the two words is null:
             //if word is null, just go straight (see processCommandMenu)
             commandP1 = processCommandMatch(word1, players.get(0));
@@ -184,7 +184,11 @@ public class TUI implements MatchListener, GameListener
     * @param the current match.
     */
     public void afterMatch(Player winner, Match match) {
-        System.out.println("Winner: " + winner.toString());
+        if (winner != null) {
+            System.out.println("Winner: " + winner.toString());
+        } else {
+            System.out.println("Draw");
+        }
         
         ArrayList<Player> players = match.returnPlayers();
         for (Player player : players) {

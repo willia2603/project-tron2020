@@ -66,6 +66,9 @@ public class SnakeTest {
         Snake s2 = new Snake(new Up(), new Coordinate(10, 10));
         ArrayList<Coordinate> body1 = s1.getBody();
         ArrayList<Coordinate> body2 = s2.getBody();
-        assertEquals(body1, body2);
+        for (int i = 0; i < body1.size(); i++) {
+            assertTrue(body1.get(i).equals(body2.get(i)));
+        }
+        //assertEquals(body1, body2);
     }
 }

@@ -7,13 +7,13 @@
  */
 public class Coordinate
 {
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     /**
      * Constructor for objects of class Coordinate
      */
-    public Coordinate(int x, int y) {
+    public Coordinate(final int x, final int y) {
         this.x = x;
         this.y = y;
     }
@@ -40,7 +40,7 @@ public class Coordinate
      * Check if two coordinates have the same values.
      * @return true if the value is the same, false otherwise.
      */
-    public boolean equals(Coordinate other) {
+    public boolean equals(final Coordinate other) {
         return other.getX() == x && other.getY() == y;
     }
     

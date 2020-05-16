@@ -7,13 +7,13 @@
  */
 public class Continue implements Command
 {   
-    private Player player;
+    private final Player player;
     
     /**
      * Constructor for objects of class Continue.
      * @param player the player of the match.
      */
-    public Continue(Player player) {
+    public Continue(final Player player) {
         this.player = player;
     }
     
