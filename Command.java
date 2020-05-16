@@ -7,5 +7,8 @@
  */
 public interface Command
 {
+    /**
+     * What to do on user command.
+     */
     void execute();
 }

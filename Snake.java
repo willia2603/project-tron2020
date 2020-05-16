@@ -45,7 +45,11 @@ public class Snake
     public void setDirection(Direction newDirection) {
         direction = newDirection;
     }
-
+    
+    /**
+     * Get direction.
+     * @return direction of the snake.
+     */
     public Direction getDirection() {
         return direction;
     }
@@ -58,6 +62,9 @@ public class Snake
         return body;
     }
     
+    /**
+     * Print the body of the snake.
+     */
     public void print(){
         for(Coordinate coor : body){
             System.out.print(coor + " ");

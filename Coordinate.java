@@ -44,8 +44,12 @@ public class Coordinate
         return other.getX() == x && other.getY() == y;
     }
     
+    /**
+     * Get String version of coordinate.
+     * @return coodinate as a String.
+     */
     @Override
-    public String toString(){
+    public String toString() {
         return "(" + this.getX() + "," + this.getY() + ")";
     }
 

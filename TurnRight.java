@@ -7,7 +7,12 @@
  */
 public class TurnRight implements Command
 {   
-    Player player;
+    private Player player;
+    
+    /**
+     * Constructor for objects of class TurnRight.
+     * @param player the player of the match.
+     */
     public TurnRight(Player player) {
         this.player = player;
     }

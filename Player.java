@@ -22,14 +22,15 @@ public class Player
     
     /**
      * 
-     * @param snake the snake to be set to a player.
+     * @param direction The direction fo the snake.
+     * @param init The initial coordinate of the snake.
      */
     public void createSnake(Direction direction, Coordinate init) {
         this.snake = new Snake(direction, init);
     }
     
     /**
-     * return the snake of the player.
+     * Return the snake of the player.
      * @return the snake of the player.
      */
     public Snake getSnake() {
@@ -53,14 +54,13 @@ public class Player
     }
     
     /**
-     * Check I collide into myself.
+     * Check if I collide into myself.
      * @return true if collision happens, false otherwise.
      */
     public boolean checkCollisionSelf() {
         Coordinate head = this.snake.getHead();
         ArrayList<Coordinate> myBody = this.getSnake().getBody();
-        // remove head
-        //myBody.remove(myBody.size() - 1);
+
         for (int i = 0; i < myBody.size() - 1; i++) {
             Coordinate c = myBody.get(i);
             if (head.equals(c)) {
@@ -70,40 +70,43 @@ public class Player
         return false;
     }
     
+    /**
+     * Compute next position of the player.
+     */
     public void nextPosition() {
         this.snake.nextPosition();
     }
     
+    /**
+     * Make player turn left.
+     */
     public void turnLeft() {
         Direction dir = this.snake.getDirection();
-        if(dir instanceof Left){
+        if (dir instanceof Left) {
             this.snake.setDirection(new Down());
-        }else if(dir instanceof Down){
+        } else if (dir instanceof Down) {
             this.snake.setDirection(new Right());
-        }else if(dir instanceof Right){
+        } else if (dir instanceof Right) {
             this.snake.setDirection(new Up());
-        }else if(dir instanceof Up){
+        } else if (dir instanceof Up) {
             this.snake.setDirection(new Left());
         }
-        
-        //fallo anche per le altredirezioni
-        //figureout where to turn
-        //look at directin, change direction accrodingly
     }
     
+    /**
+     * Make player turn right.
+     */
     public void turnRight() {
         Direction dir = this.snake.getDirection();
-        if(dir instanceof Left){
+        if (dir instanceof Left) {
             this.snake.setDirection(new Up());
-        }else if(dir instanceof Up){
+        } else if (dir instanceof Up) {
             this.snake.setDirection(new Right());
-        }else if(dir instanceof Right){
+        } else if (dir instanceof Right) {
             this.snake.setDirection(new Down());
-        }else if(dir instanceof Down){
+        } else if (dir instanceof Down) {
             this.snake.setDirection(new Left());
         }
-        //figureout where to turn
-        //look at directin, change direction accrodingly
     }
     
     /**
@@ -121,12 +124,19 @@ public class Player
         return lives;
     }
     
-    public void printSnake(){
+    /**
+     * Print the snake of the player.
+     */
+    public void printSnake() {
         snake.print();
     }
     
-        @Override
-    public String toString(){
+    @Override
+    /**
+     * Return the name of the player.
+     * @return the name of the player.
+     */
+    public String toString() {
         return this.name;
     }
     

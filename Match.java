@@ -29,14 +29,26 @@ public class Match
         p2.createSnake(p2Dir, p2Coord);
     }
     
+    /**
+     * Add listener.
+     * @param the listener.
+     */
     public void registerListener(MatchListener listener) {
         listeners.add(listener);
     }
     
+    /**
+     * Add a command.
+     * @param command the command of the user.
+     */
     public void addCommand(Command command) {
         commands.add(command);
     }
     
+    /**
+     * Return list of players.
+     * @return list of players.
+     */
     public ArrayList<Player> returnPlayers() {
         ArrayList players = new ArrayList();
         players.add(p1);
@@ -44,12 +56,20 @@ public class Match
         return players;
     }
     
-    protected void updateSnake(){
+    /**
+     * Update position of players.
+     */
+    protected void updateSnake() {
         p1.nextPosition();
         p2.nextPosition();
     }
     
-    protected int checkCollision(){
+    /**
+     * Check if players collides.
+     * @return -1 both players die, 1 first player dies, 2 first player dies
+     * 0 no collsion.
+     */
+    protected int checkCollision() {
         //need border of game and check player doesn't collide into it.
         //check collisions: head-head, self-self, p1-p2
         //Note: checkCollision takes care of head-head collision + p1 p2 collision
@@ -69,8 +89,11 @@ public class Match
         // draw
         return 0;
     }
-
-    public void beforeTick(){
+    
+    /**
+     * Notify listeners and set player direction according to user string.
+     */
+    public void beforeTick() {
         // notify listeners when play is callled
         for (MatchListener listener : listeners) {
             listener.beforeTick(this);
@@ -105,25 +128,22 @@ public class Match
             beforeTick();
             
             // read command
-            // todo want to quit
+            // taken care by beforeTick()
             
             int result = tick();
             
-            //afterTick
             switch(result){
                 case 0:
                     continue;
                 case -1: 
-                    //System.out.println("You died at the same time.");
                     return null;
                 case 1:
-                    //System.out.println("Match won by Player 1");
                     return this.p1;
                 case 2:
-                    //System.out.println("Match won by Player 2");
                     return this.p2;
                 default:
-                    //condition should be true. if false, if enters here, error is reported
+                    //condition should be true. if false, if enters here,
+                    //and error is reported
                     assert(false);
             }
             

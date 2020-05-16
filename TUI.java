@@ -9,12 +9,20 @@ import java.util.ArrayList;
 public class TUI implements MatchListener, GameListener
 {
     private Parser parser;
-
+    
+    /**
+     * Constructor for TUI object.
+     */
     public TUI()
     {
         parser = new Parser();
     }
     
+    /**
+     * Process menu commands.
+     * @param userCommand the command given by user.
+     * @return true if player wants to quit, false otherwise.
+     */
     private boolean processCommandMenu(String userCommand) {
         switch (userCommand) {
             case "help":
@@ -35,6 +43,12 @@ public class TUI implements MatchListener, GameListener
         return false;
     }
     
+    /**
+     * Process match commands.
+     * @param userCommand the command given by user.
+     * @param player the player that needs to act.
+     * @return command associated with userCommand.
+     */
     private Command processCommandMatch(String userCommand, Player player) {
         //if one of the two words is null, make snake go straight
         if (userCommand == null) {
@@ -69,18 +83,27 @@ public class TUI implements MatchListener, GameListener
         System.out.println();
     }
     
+    /**
+    * Print welcome and list of commands.
+    */
     private void printWelcome() {
         System.out.println();
         System.out.println("Welcome to Tron2020!");
         System.out.print("The commands are: ");
-        System.out.print("help play quit");
+        System.out.print("'help' 'play' 'quit'");
         System.out.println();
     }
     
+    /**
+    * Print winner of game.
+    */
     private void showWinner(Player winner) {
        System.out.println("The winner is: " + winner.toString());
     }
     
+    /**
+    * Start the game.
+    */
     private void play() {
         Game game = new Game();
         //register TUI into game
@@ -90,6 +113,9 @@ public class TUI implements MatchListener, GameListener
         showWinner(winner);
     }
     
+    /**
+    * Start application.
+    */
     public void start()
     {
         printWelcome();
@@ -103,6 +129,10 @@ public class TUI implements MatchListener, GameListener
         System.out.println("Thank you for riding. Good bye.");
     }
     
+    /**
+    * Read the user commands when playing the match.
+    * @param the current match.
+    */
     private void readMatchCommand(Match match) {
         ArrayList<Player> players = match.returnPlayers();
         Command commandP1;
@@ -123,6 +153,10 @@ public class TUI implements MatchListener, GameListener
         match.addCommand(commandP2);
     }
     
+    /**
+    * Printer player information before the tick and get new command from user.
+    * @param the current match.
+    */
     public void beforeTick(Match match) {
         ArrayList<Player> players = match.returnPlayers();
         // print snake
@@ -135,11 +169,20 @@ public class TUI implements MatchListener, GameListener
         readMatchCommand(match);
     }
     
+    /**
+    * Register TUI object into match.
+    * @param the current match.
+    */
     public void beforeMatch(Match match) {
         //register TUI into match
         match.registerListener(this);
     }
     
+    /**
+    * Print winner of match and lives of players.
+    * @param player the winner of the match.
+    * @param the current match.
+    */
     public void afterMatch(Player winner, Match match) {
         System.out.println("Winner: " + winner.toString());
         

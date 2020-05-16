@@ -10,7 +10,6 @@ public class Parser
 {
     private Scanner reader;
     
-
     /**
      * Constructor for objects of class Parser
      */
@@ -18,7 +17,11 @@ public class Parser
     {
         reader = new Scanner(System.in);
     }
-
+    
+    /**
+     * Get commands from user.
+     * @return array of Strings containing the commands.
+     */
     public String[] getCommand() 
     {
         String inputLine;   // will hold the full input line
@@ -32,7 +35,7 @@ public class Parser
         Scanner tokenizer = new Scanner(inputLine);
         if (tokenizer.hasNext()) {
             words[0] = tokenizer.next();
-            if(tokenizer.hasNext()) {
+            if (tokenizer.hasNext()) {
                 words[1] = tokenizer.next();      // get second word
                 // note: we just ignore the rest of the input line.
             }
@@ -40,12 +43,4 @@ public class Parser
 
         return words;
     }
-    
-    // /**
-     // * Print out a list of valid command words.
-     // */
-    // public void showCommands()
-    // {
-        // commands.showAll();
-    // }
 }

@@ -12,8 +12,10 @@ public class Game
     ArrayList<Command> commands;
     protected Player p1;
     protected Player p2;
-    //add list of commands
     
+    /**
+     * Constructor for objects of class Game.
+     */
     public Game(){
         this.listeners = new ArrayList<>();
         this.commands = new ArrayList<>();
@@ -21,45 +23,74 @@ public class Game
         p2 = new Player("Player 2");
     }
     
+    /**
+     * Register a listener.
+     * @param listener The GameListener.
+     */
     public void registerListener(GameListener listener) {
         listeners.add(listener);
     }
     
+    /**
+     * Notify all listeners.
+     * @param match The current match.
+     */
     public void beforeMatch(Match match){
         for (GameListener listener : listeners) {
             listener.beforeMatch(match);
         }
     }
     
-    public void afterMatch(Player winner, Match match){
+    /**
+     * Notify all listeners.
+     * @param winner The winner of the match.
+     * @param match The current match.
+     */
+    public void afterMatch(Player winner, Match match) {
         for (GameListener listener : listeners) {
             listener.afterMatch(winner, match);
         }
     }
     
-    protected Player gameWinner(){
-        if(p1.getLives() == 0){
+    /**
+     * Return winner of the game.
+     * @return winner of the match.
+     */
+    protected Player gameWinner() {
+        if (p1.getLives() == 0) {
             return p2;
-        }else{
+        } else {
             return p1;
         }
     }
     
+    /**
+     * Reduce lives of player.
+     * @param player of the match.
+     */
     protected void alive(Player player){
-        if(p1 == player){
+        if (p1 == player) {
             p2.die();
-        } else if(p1 == player) {
+        } else if (p1 == player) {
             p1.die();
         }
     }
     
+    /**
+     * Continue game according to number of lives.
+     * @return true if both players have at least 1 life, false otherwise.
+     */
     protected boolean continueGame(){
         return p1.getLives() > 0 && p2.getLives() > 0;
     }
     
+    /**
+     * Start game.
+     * @return winner of the game.
+     */
     public Player play()
     {
-        while(this.continueGame()){
+        while(this.continueGame()) {
             Match match = new Match(this.p1, this.p2);
             beforeMatch(match);
             Player winner = match.play();
