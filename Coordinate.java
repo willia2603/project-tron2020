@@ -11,7 +11,9 @@ public class Coordinate
     private final int y;
 
     /**
-     * Constructor for objects of class Coordinate
+     * Constructor for objects of class Coordinate.
+     * @param x The x coordinate.
+     * @param y The y coordinate.
      */
     public Coordinate(final int x, final int y) {
         this.x = x;
@@ -38,6 +40,7 @@ public class Coordinate
     
     /**
      * Check if two coordinates have the same values.
+     * @param other The other coordinate.
      * @return true if the value is the same, false otherwise.
      */
     public boolean equals(final Coordinate other) {

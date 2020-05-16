@@ -11,7 +11,7 @@ public class Parser
     private Scanner reader;
     
     /**
-     * Constructor for objects of class Parser
+     * Constructor for objects of class Parser.
      */
     public Parser()
     {
@@ -32,7 +32,7 @@ public class Parser
         inputLine = reader.nextLine();
 
         // Find up to two words on the line.
-        Scanner tokenizer = new Scanner(inputLine);
+        final Scanner tokenizer = new Scanner(inputLine);
         if (tokenizer.hasNext()) {
             words[0] = tokenizer.next();
             if (tokenizer.hasNext()) {

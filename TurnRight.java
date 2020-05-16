@@ -17,6 +17,9 @@ public class TurnRight implements Command
         this.player = player;
     }
     
+    /**
+     * Turn player right.
+     */
     public void execute() {
         player.turnRight();
     }

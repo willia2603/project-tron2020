@@ -5,6 +5,7 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
+
 public class Snake
 {
     //head is last element of AL
@@ -12,9 +13,11 @@ public class Snake
     private Direction direction;
     
     /**
-     * Constructor for objects of class Snake
+     * Constructor for objects of class Snake.
+     * @param direction the direction of the snake.
+     * @param init The initial coordinate of the snake.
      */
-    public Snake(Direction direction, Coordinate init) {
+    public Snake(final Direction direction, final  Coordinate init) {
         this.direction = direction;
         body = new ArrayList<>();
         body.add(init);
@@ -32,17 +35,18 @@ public class Snake
      * Compute next position.
      */
     public void nextPosition() {
-        Coordinate prevHead = getHead();
-        int newX = prevHead.getX() + direction.actionOnX();
-        int newY = prevHead.getY() + direction.actionOnY();
-        Coordinate newHead = new Coordinate(newX, newY);
+        final Coordinate prevHead = getHead();
+        final int newX = prevHead.getX() + direction.actionOnX();
+        final int newY = prevHead.getY() + direction.actionOnY();
+        final Coordinate newHead = new Coordinate(newX, newY);
         body.add(newHead);
     }
     
     /**
      * Change direction.
+     * @param newDirection The new direction of the snake.
      */
-    public void setDirection(Direction newDirection) {
+    public void setDirection(final Direction newDirection) {
         direction = newDirection;
     }
     
@@ -65,8 +69,8 @@ public class Snake
     /**
      * Print the body of the snake.
      */
-    public void print(){
-        for(Coordinate coor : body){
+    public void print() {
+        for (final Coordinate coor : body) {
             System.out.print(coor + " ");
         }
         System.out.println();

@@ -9,7 +9,7 @@ public interface MatchListener
 {
     /**
      * What to do before the tick.
-     * @param  the current match.
+     * @param match The current match.
      */
     void beforeTick(Match match);
     

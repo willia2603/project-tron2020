@@ -98,7 +98,7 @@ public class TUI implements MatchListener, GameListener
     * Print winner of game.
     */
     private void showWinner(final Player winner) {
-       System.out.println("The winner is: " + winner.toString());
+        System.out.println("The winner is: " + winner.toString());
     }
     
     /**
@@ -155,12 +155,12 @@ public class TUI implements MatchListener, GameListener
     
     /**
     * Printer player information before the tick and get new command from user.
-    * @param the current match.
+    * @param match The current match.
     */
-    public void beforeTick(Match match) {
-        ArrayList<Player> players = match.returnPlayers();
+    public void beforeTick(final Match match) {
+        final ArrayList<Player> players = match.returnPlayers();
         // print snake
-        for (Player player : players) {
+        for (final Player player : players) {
             System.out.print(player.toString() + ": ");
             player.printSnake();
         }
@@ -171,27 +171,27 @@ public class TUI implements MatchListener, GameListener
     
     /**
     * Register TUI object into match.
-    * @param the current match.
+    * @param match The current match.
     */
-    public void beforeMatch(Match match) {
+    public void beforeMatch(final Match match) {
         //register TUI into match
         match.registerListener(this);
     }
     
     /**
     * Print winner of match and lives of players.
-    * @param player the winner of the match.
-    * @param the current match.
+    * @param winner The winner of the match.
+    * @param match The current match.
     */
-    public void afterMatch(Player winner, Match match) {
+    public void afterMatch(final Player winner, final  Match match) {
         if (winner != null) {
             System.out.println("Winner: " + winner.toString());
         } else {
             System.out.println("Draw");
         }
         
-        ArrayList<Player> players = match.returnPlayers();
-        for (Player player : players) {
+        final ArrayList<Player> players = match.returnPlayers();
+        for (final Player player : players) {
             System.out.println(player.toString() + " has " + player.getLives() + " lives.");
         }
     }

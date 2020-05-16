@@ -13,9 +13,10 @@ public class Player
     private String name;
 
     /**
-     * Constructor for objects of class Player
+     * Constructor for objects of class Player.
+     * @param name The name of the player.
      */
-    public Player(String name) {
+    public Player(final String name) {
         lives = 3;
         this.name = name;
     }
@@ -25,7 +26,7 @@ public class Player
      * @param direction The direction fo the snake.
      * @param init The initial coordinate of the snake.
      */
-    public void createSnake(Direction direction, Coordinate init) {
+    public void createSnake(final Direction direction, final Coordinate init) {
         this.snake = new Snake(direction, init);
     }
     
@@ -42,10 +43,10 @@ public class Player
      * @param other The other player.
      * @return true if collision happens, false otherwise.
      */
-    public boolean checkCollision(Player other) {
-        Coordinate head = this.snake.getHead();
-        ArrayList<Coordinate> otherBody = other.getSnake().getBody();
-        for (Coordinate c : otherBody) {
+    public boolean checkCollision(final Player other) {
+        final Coordinate head = this.snake.getHead();
+        final ArrayList<Coordinate> otherBody = other.getSnake().getBody();
+        for (final Coordinate c : otherBody) {
             if (head.equals(c)) {
                 return true;
             }
@@ -58,11 +59,11 @@ public class Player
      * @return true if collision happens, false otherwise.
      */
     public boolean checkCollisionSelf() {
-        Coordinate head = this.snake.getHead();
-        ArrayList<Coordinate> myBody = this.getSnake().getBody();
+        final Coordinate head = this.snake.getHead();
+        final ArrayList<Coordinate> myBody = this.getSnake().getBody();
 
         for (int i = 0; i < myBody.size() - 1; i++) {
-            Coordinate c = myBody.get(i);
+            final Coordinate c = myBody.get(i);
             if (head.equals(c)) {
                 return true;
             }
@@ -81,7 +82,7 @@ public class Player
      * Make player turn left.
      */
     public void turnLeft() {
-        Direction dir = this.snake.getDirection();
+        final Direction dir = this.snake.getDirection();
         if (dir instanceof Left) {
             this.snake.setDirection(new Down());
         } else if (dir instanceof Down) {
@@ -97,7 +98,7 @@ public class Player
      * Make player turn right.
      */
     public void turnRight() {
-        Direction dir = this.snake.getDirection();
+        final Direction dir = this.snake.getDirection();
         if (dir instanceof Left) {
             this.snake.setDirection(new Up());
         } else if (dir instanceof Up) {
@@ -110,10 +111,10 @@ public class Player
     }
     
     /**
-     * Remove a life from the player.
+     * Remove a life from player.
      */
     public void die() {
-       lives--; 
+        lives--; 
     }
     
     /**

@@ -15,7 +15,7 @@ public class Game
     /**
      * Constructor for objects of class Game.
      */
-    public Game(){
+    public Game() {
         this.listeners = new ArrayList<>();
         p1 = new Player("Player 1");
         p2 = new Player("Player 2");
@@ -25,7 +25,7 @@ public class Game
      * Register a listener.
      * @param listener The GameListener.
      */
-    public void registerListener(GameListener listener) {
+    public void registerListener(final GameListener listener) {
         listeners.add(listener);
     }
     
@@ -33,8 +33,8 @@ public class Game
      * Notify all listeners.
      * @param match The current match.
      */
-    public void beforeMatch(Match match){
-        for (GameListener listener : listeners) {
+    public void beforeMatch(final Match match) {
+        for (final GameListener listener : listeners) {
             listener.beforeMatch(match);
         }
     }
@@ -44,9 +44,9 @@ public class Game
      * @param winner The winner of the match.
      * @param match The current match.
      */
-    public void afterMatch(Player winner, Match match) {
-        for (GameListener listener : listeners) {
-            listener.afterMatch(winner, match);
+    public void afterMatch(final Player winner, final Match match) {
+        for (final GameListener listener : listeners) {
+            listener.afterMatch(winner,match);
         }
     }
     
@@ -66,7 +66,7 @@ public class Game
      * Reduce lives of player.
      * @param player of the match.
      */
-    protected void alive(Player player){
+    protected void alive(final Player player) {
         if (p1 == player) {
             p2.die();
         } else if (p2 == player) {
@@ -78,7 +78,7 @@ public class Game
      * Continue game according to number of lives.
      * @return true if both players have at least 1 life, false otherwise.
      */
-    public boolean continueGame(){
+    public boolean continueGame() {
         return p1.getLives() > 0 && p2.getLives() > 0;
     }
     
@@ -88,34 +88,38 @@ public class Game
      */
     public Player play()
     {
-        while(this.continueGame()) {
-            Match match = new Match(this.p1, this.p2);
+        while (this.continueGame()) {
+            final Match match = new Match(this.p1, this.p2);
             beforeMatch(match);
-            Player winner = match.play();
+            final Player winner = match.play();
 
             this.alive(winner);
             
             afterMatch(winner, match);
         }
         
-        Player gameWinner = this.gameWinner();
+        final Player gameWinner = this.gameWinner();
         return gameWinner;
     }
     
-     /**
+    /**
      * Register list of listeners (needed for testing).
+     * @return array of game listeners.
      */
     public ArrayList<GameListener> returnListeners() {
         return this.listeners;
     }
     
-     /**
+    /**
      * Get players of game (needed for testing).
+     * @param name The name of the player.
+     * @return player that matches string.
      */
-    public Player getPlayer(String name) {
+    public Player getPlayer(final String name) {
         if (name.equals(p1.toString())) {
             return this.p1;
         }
+        
         if (name.equals(p2.toString())) {
             return this.p2;
         } else {
