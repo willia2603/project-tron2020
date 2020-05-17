@@ -34,13 +34,9 @@ public class nMatch {
     }
 
         protected int checkCollision(){
-        //need border of game and check player doesn't collide into it.
-        //check collisions: head-head, self-self, p1-p2
-        //Note: checkCollision takes care of head-head collision + p1 p2 collision
         boolean dead1 = p1.checkCollision(p2) || p1.checkCollisionSelf();
         boolean dead2 = p2.checkCollision(p1) || p2.checkCollisionSelf();
 
-        // 0 -> no collision, start new tick, -1 -> both collision, 1 -> p1 wins, 2 -> p2 wins
         if (dead1 && dead2) {
             return 0;
         }
@@ -50,7 +46,6 @@ public class nMatch {
         if (dead1) {
             return 1;
         }
-        // draw
         return -1;
     }
 }

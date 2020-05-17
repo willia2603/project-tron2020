@@ -1,3 +1,4 @@
+import java.awt.*;
 
 /**
  * Write a description of class Coordinate here.
@@ -49,11 +50,23 @@ public class Coordinate
     
     /**
      * Get String version of coordinate.
-     * @return coodinate as a String.
+     * @return coordinate as a String.
      */
     @Override
     public String toString() {
         return "(" + this.getX() + "," + this.getY() + ")";
+    }
+
+    /**
+     * Draw a rectangle at given coordinate.
+     * @param graphics the graphic to be used in the Screen class.
+     * @param color the color of the rectangles (represent the snake's color).
+     */
+    public void draw(Graphics graphics, Color color) {
+        graphics.setColor(color);
+        graphics.fillRect(getX() * 10, getY() * 10, 10, 10);
+        graphics.setColor(color);
+        graphics.fillRect(getX() * 10 + 2, getY() * 10 + 2, 10 - 4, 10 - 4);
     }
 
 }

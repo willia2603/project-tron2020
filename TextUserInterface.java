@@ -11,7 +11,7 @@ public class TextUserInterface {
      * Available user commands.
      */
     private static final String[] validCommands = {
-            "start", "help", "quit"
+            "start", "help", "quit", "start gui"
     };
 
     private static final String[] playerCommands = {
@@ -72,7 +72,7 @@ public class TextUserInterface {
      * @return an error String.
      */
     public String printDefault() {
-        return "The commands are: \"start\", \"help\", \"quit\". " + "You typed: ";
+        return "The commands are: \"start\", \"start gui\", \"help\", \"quit\". " + "You typed: ";
     }
 
     public String printPlayerDefault() {

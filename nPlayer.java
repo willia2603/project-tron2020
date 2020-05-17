@@ -55,8 +55,6 @@ public class nPlayer {
     public boolean checkCollisionSelf() {
         Coordinate head = this.snake.getHead();
         ArrayList<Coordinate> myBody = this.getSnake().getBody();
-        // remove head
-        //myBody.remove(myBody.size() - 1);
         for (int i = 0; i < myBody.size() - 1; i++) {
             Coordinate c = myBody.get(i);
             if (head.equals(c)) {
@@ -64,6 +62,20 @@ public class nPlayer {
             }
         }
         return false;
+    }
+
+    /**
+     * Check whether a player has hit the wall.
+     * @param H is the Height of the Grid.
+     * @param W is the Width of the Grid.
+     * @return true if a player has hit the wall, false otherwise.
+     */
+    public boolean checkCollisionWall(final int H, final int W) {
+        int xCor = getSnake().getHead().getX();
+        int yCor = getSnake().getHead().getY();
+        int xBorder = (W / 10) - 1;
+        int yBorder = (H / 10) - 1;
+        return xCor < 0 || xCor > xBorder || yCor < 0 || yCor > yBorder;
     }
 
         public void nextPosition() {

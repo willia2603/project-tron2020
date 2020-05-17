@@ -86,6 +86,10 @@ public class Main {
                         input.printHelp();
                         break;
 
+                    case "start gui":   // start the GUI application
+                        input.printStart();
+                        new Gui("Tron2020");
+
                     case "quit":
                         input.printQuit();
                         b = false;
