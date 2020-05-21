@@ -72,6 +72,15 @@ public class Player
     }
     
     /**
+     * Check I collide into border.
+     * @return true if collision happens, false otherwise.
+     */
+    public boolean checkCollisionBorder() {
+        Coordinate head = this.snake.getHead();
+        return (head.getX() >= Setting.ARENA_WIDTH ||  head.getY() >= Setting.ARENA_HEIGHT);
+    }
+    
+    /**
      * Compute next position of the player.
      */
     public void nextPosition() {

@@ -24,8 +24,8 @@ public class Match
         this.commands = new ArrayList<>();
         this.p1 = p1;
         this.p2 = p2;
-        final Coordinate p1Coord = new Coordinate(10, 10);
-        final Coordinate p2Coord = new Coordinate(20, 10);
+        Coordinate p1Coord = new Coordinate(Setting.ARENA_WIDTH/5, Setting.ARENA_HEIGHT/2);
+        Coordinate p2Coord = new Coordinate(4*(Setting.ARENA_WIDTH/5), Setting.ARENA_HEIGHT/2);
         final Direction p1Dir = new Right();
         final Direction p2Dir = new Left();
         p1.createSnake(p1Dir, p1Coord);
@@ -75,8 +75,8 @@ public class Match
         //need border of game and check player doesn't collide into it.
         //check collisions: head-head, self-self, p1-p2
         //Note: checkCollision takes care of head-head collision + p1 p2 collision
-        final boolean dead1 = p1.checkCollision(p2) || p1.checkCollisionSelf();
-        final boolean dead2 = p2.checkCollision(p1) || p2.checkCollisionSelf();
+        final boolean dead1 = p1.checkCollision(p2) || p1.checkCollisionSelf() || p1.checkCollisionBorder();
+        final boolean dead2 = p2.checkCollision(p1) || p2.checkCollisionSelf() || p2.checkCollisionBorder();
         
         // 0 -> no collision, start new tick, -1 -> both collision, 1 -> p1 wins, 2 -> p2 wins
         if (dead1 && dead2) {
