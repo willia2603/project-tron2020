@@ -33,11 +33,11 @@ public class GamePanel extends JPanel
         private final static int HEIGHT = 600;
         private Match match;
         public Canvas(Game game) {
-            this.match = match;
             //setBackground(Color.RED);
             
             game.registerListener(new GameListener() {
                 public void beforeMatch(Match match) {
+                    Canvas.this.match = match;
                     match.registerListener(new MatchListener() {
                         public void beforeTick(Match match) {
                             repaint();
