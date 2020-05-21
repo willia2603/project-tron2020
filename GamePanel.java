@@ -40,6 +40,11 @@ public class GamePanel extends JPanel
                     Canvas.this.match = match;
                     match.registerListener(new MatchListener() {
                         public void beforeTick(Match match) {
+                            try {
+                                Thread.sleep(100);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             repaint();
                         }          
                     });
