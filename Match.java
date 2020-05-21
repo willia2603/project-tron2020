@@ -133,6 +133,12 @@ public class Match
             // taken care by beforeTick()
             
             final int result = tick();
+            //sleep to no draw all the time. Have tick every second.
+            try {
+                 Thread.sleep(1000);
+            } catch (Exception e) {
+                 e.printStackTrace();
+            }
             
             switch (result) {
                 case 0:
