@@ -22,4 +22,12 @@ public class Up implements Direction
     public int actionOnY() {
         return -1;
     }
+    
+     public Direction getLeftDirection() {
+        return  new Left();
+    }
+    
+    public Direction getRightDirection() {
+        return  new Right();
+    }
 }

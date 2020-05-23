@@ -17,4 +17,8 @@ public interface Direction
      * @return value of y.
      */
     public abstract int actionOnY();
+    
+    public abstract Direction getLeftDirection();
+    
+    public abstract Direction getRightDirection();
 }

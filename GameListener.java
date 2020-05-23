@@ -19,4 +19,6 @@ public interface GameListener
      * @param match The match that is about to start.
      */
     void afterMatch(Player player, Match match);
+    
+    void afterGame(Player gameWinner);
 }

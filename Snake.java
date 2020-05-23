@@ -24,6 +24,16 @@ public class Snake
     }
     
     /**
+     * Copy constructor.
+     * @param snake The snake that need to be copied.
+     */
+    public Snake(final Snake snake) {
+        this.direction = snake.direction;
+        // cast since clone() returns Object type.
+        this.body = (ArrayList<Coordinate>) snake.body.clone();
+    }
+    
+    /**
      * Get the head of the snake.
      * @return the head of the snake.
      */

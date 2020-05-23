@@ -51,6 +51,17 @@ public class Game
     }
     
     /**
+     * Notify all listeners.
+     * @param winner The winner of the match.
+     * @param match The current match.
+     */
+    public void afterGame(final Player gameWinner) {
+        for (final GameListener listener : listeners) {
+            listener.afterGame(gameWinner);
+        }
+    }
+    
+    /**
      * Return winner of the game.
      * @return winner of the match.
      */
@@ -99,6 +110,7 @@ public class Game
         }
         
         final Player gameWinner = this.gameWinner();
+        this.afterGame(gameWinner);
         return gameWinner;
     }
     

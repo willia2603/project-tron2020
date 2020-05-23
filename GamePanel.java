@@ -52,6 +52,8 @@ public class GamePanel extends JPanel
                 public void afterMatch(Player player, Match match) {
                     
                 }
+                
+                public void afterGame(Player gameWinner) {}
             });
             setVisible(true);
         }
@@ -93,7 +95,8 @@ public class GamePanel extends JPanel
             Player p1 = players.get(0);
             Color p1Color = Color.decode("#03C9F0");
             g.setColor(p1Color);
-            for (Coordinate c : p1.getSnake().getBody()) {
+            //iterator to 
+            for (Coordinate c : p1.getSnakeCopy().getBody()) {
                 //fillRect topLeftX, topLeftY,bottomRightX, bottomRightY
                 g.fillRect(
                 //
@@ -107,7 +110,7 @@ public class GamePanel extends JPanel
             Color p2Color = Color.decode("#E500FF");
             g.setColor(p2Color);
             Player p2 = players.get(1);
-            for (Coordinate c : p2.getSnake().getBody()) {
+            for (Coordinate c : p2.getSnakeCopy().getBody()) {
                 //fillRect topLeftX, topLeftY,bottomRightX, bottomRightY
                 g.fillRect(
                 //
@@ -193,6 +196,8 @@ public class GamePanel extends JPanel
                 public void afterMatch(Player player, Match match) {
                     
                 }
+                
+                public void afterGame(Player gameWinner) {}
             
             });
         }

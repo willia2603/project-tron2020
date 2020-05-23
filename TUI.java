@@ -195,5 +195,8 @@ public class TUI implements MatchListener, GameListener
             System.out.println(player.toString() + " has " + player.getLives() + " lives.");
         }
     }
-
+    
+    public void afterGame(Player gameWinner) {
+        System.out.println("The winner is: " + gameWinner.toString());
+    }
 }

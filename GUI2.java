@@ -31,7 +31,17 @@ public class GUI2 extends JFrame
                 GUI2.this.addKeyListener(new Key(match));
             }
             
-            public void afterMatch(Player player, Match match) {}
+            public void afterMatch(Player player, Match match) {
+                if (player == null) {
+                    JOptionPane.showMessageDialog(null, "Draw");
+                } else {
+                    JOptionPane.showMessageDialog(null, player.toString() + " won the match");
+                }
+            }
+            
+            public void afterGame(Player gameWinner) {
+                JOptionPane.showMessageDialog(null, gameWinner.toString() + " won the game");
+            }
         });
         //take off border top
         //gamePanel.setBorder(BorderFactory.createEmptyBorder(-5,0,0,0));
@@ -59,15 +69,15 @@ public class GUI2 extends JFrame
             Player p2 = match.returnPlayers().get(1);
             
             if (key == KeyEvent.VK_LEFT) {
-                match.addCommand(new TurnLeft(p1));
+                match.addCommand(new TurnLeft(p2));
             } else if (key == KeyEvent.VK_RIGHT) {
-                match.addCommand(new TurnRight(p1));
+                match.addCommand(new TurnRight(p2));
             }
             
             if (key == KeyEvent.VK_A) {
-                match.addCommand(new TurnLeft(p2));
+                match.addCommand(new TurnLeft(p1));
             } else if (key == KeyEvent.VK_D) {
-                match.addCommand(new TurnRight(p2));
+                match.addCommand(new TurnRight(p1));
             }
             
         }

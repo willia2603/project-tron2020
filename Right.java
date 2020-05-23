@@ -22,4 +22,12 @@ public class Right implements Direction
     public int actionOnY() {
         return 0;
     }
+    
+     public Direction getLeftDirection() {
+        return  new Up();
+    }
+    
+    public Direction getRightDirection() {
+        return  new Down();
+    }
 }

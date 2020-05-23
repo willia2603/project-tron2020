@@ -22,4 +22,12 @@ public class Down implements Direction
     public int actionOnY() {
         return 1;
     }
+    
+     public Direction getLeftDirection() {
+        return  new Right();
+    }
+    
+    public Direction getRightDirection() {
+        return  new Left();
+    }
 }

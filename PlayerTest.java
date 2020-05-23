@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import static org.junit.Assert.*;
 import org.junit.After;
@@ -54,15 +53,15 @@ public class PlayerTest {
    public void testCreateSnake() {
        Player p20 = new Player("P20");
        p20.createSnake(new Up(), c10_10);
-       assertEquals(p20.getSnake().getBody(), p1.getSnake().getBody());
+       assertEquals(p20.getSnakeCopy().getBody(), p1.getSnakeCopy().getBody());
    }
-
+   //check it again
    @Test
-   public void testGetSnake() {
+   public void testGetSnakeCopy() {
        Player p20 = new Player("P20");
        p20.createSnake(new Up(), c10_10);
-       ArrayList<Coordinate> body = p20.getSnake().getBody();
-       assertEquals(body, p1.getSnake().getBody());
+       ArrayList<Coordinate> body = p20.getSnakeCopy().getBody();
+       assertEquals(body, p1.getSnakeCopy().getBody());
    }
    
    @Test
@@ -84,12 +83,12 @@ public class PlayerTest {
    
    @Test
    public void testNextPosition() {
-       int newHeadX = p1.getSnake().getHead().getX() + 0;
-       int newHeadY = p1.getSnake().getHead().getY() - 1;
+       int newHeadX = p1.getSnakeCopy().getHead().getX() + 0;
+       int newHeadY = p1.getSnakeCopy().getHead().getY() - 1;
        Coordinate newHead = new Coordinate(newHeadX, newHeadY);
        p1.nextPosition();
-       assertEquals(newHead.getX(), p1.getSnake().getHead().getX());
-       assertEquals(newHead.getY(), p1.getSnake().getHead().getY());
+       assertEquals(newHead.getX(), p1.getSnakeCopy().getHead().getX());
+       assertEquals(newHead.getY(), p1.getSnakeCopy().getHead().getY());
    }
    
    @Test
@@ -103,10 +102,10 @@ public class PlayerTest {
        p5.turnLeft();
        p6.turnLeft();
        p7.turnLeft();
-       assertTrue(p1.getSnake().getDirection() instanceof Left);
-       assertTrue(p5.getSnake().getDirection() instanceof Right);
-       assertTrue(p6.getSnake().getDirection() instanceof Up);
-       assertTrue(p7.getSnake().getDirection() instanceof Down);
+       assertTrue(p1.getSnakeCopy().getDirection() instanceof Left);
+       assertTrue(p5.getSnakeCopy().getDirection() instanceof Right);
+       assertTrue(p6.getSnakeCopy().getDirection() instanceof Up);
+       assertTrue(p7.getSnakeCopy().getDirection() instanceof Down);
    }
    
    @Test
@@ -120,10 +119,10 @@ public class PlayerTest {
        p5.turnRight();
        p6.turnRight();
        p7.turnRight();
-       assertTrue(p5.getSnake().getDirection() instanceof Left);
-       assertTrue(p1.getSnake().getDirection() instanceof Right);
-       assertTrue(p7.getSnake().getDirection() instanceof Up);
-       assertTrue(p6.getSnake().getDirection() instanceof Down);
+       assertTrue(p5.getSnakeCopy().getDirection() instanceof Left);
+       assertTrue(p1.getSnakeCopy().getDirection() instanceof Right);
+       assertTrue(p7.getSnakeCopy().getDirection() instanceof Up);
+       assertTrue(p6.getSnakeCopy().getDirection() instanceof Down);
 
     
    }

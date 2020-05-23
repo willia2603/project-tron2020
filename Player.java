@@ -29,13 +29,22 @@ public class Player
     public void createSnake(final Direction direction, final Coordinate init) {
         this.snake = new Snake(direction, init);
     }
-    
+    //exposing implementation details
+    //make it private. Do it after GUI. Player should not expose snake.
     /**
      * Return the snake of the player.
      * @return the snake of the player.
      */
-    public Snake getSnake() {
+    private Snake getSnake() {
         return snake;
+    }
+    
+    /**
+     * Return a copy of the snake of the player.
+     * @return copy of snake of the player.
+     */
+    public Snake getSnakeCopy() {
+        return new Snake(snake);
     }
     
     /**
@@ -77,7 +86,10 @@ public class Player
      */
     public boolean checkCollisionBorder() {
         Coordinate head = this.snake.getHead();
-        return (head.getX() >= Setting.ARENA_WIDTH ||  head.getY() >= Setting.ARENA_HEIGHT);
+        return (head.getX() >= Setting.ARENA_WIDTH 
+                || head.getX() < 0  
+                ||  head.getY() >= Setting.ARENA_HEIGHT
+                || head.getY() < 0);
     }
     
     /**
@@ -86,37 +98,19 @@ public class Player
     public void nextPosition() {
         this.snake.nextPosition();
     }
-    
+
     /**
      * Make player turn left.
      */
     public void turnLeft() {
-        final Direction dir = this.snake.getDirection();
-        if (dir instanceof Left) {
-            this.snake.setDirection(new Down());
-        } else if (dir instanceof Down) {
-            this.snake.setDirection(new Right());
-        } else if (dir instanceof Right) {
-            this.snake.setDirection(new Up());
-        } else if (dir instanceof Up) {
-            this.snake.setDirection(new Left());
-        }
+        this.snake.setDirection(this.snake.getDirection().getLeftDirection());
     }
     
     /**
      * Make player turn right.
      */
     public void turnRight() {
-        final Direction dir = this.snake.getDirection();
-        if (dir instanceof Left) {
-            this.snake.setDirection(new Up());
-        } else if (dir instanceof Up) {
-            this.snake.setDirection(new Right());
-        } else if (dir instanceof Right) {
-            this.snake.setDirection(new Down());
-        } else if (dir instanceof Down) {
-            this.snake.setDirection(new Left());
-        }
+        this.snake.setDirection(this.snake.getDirection().getRightDirection());
     }
     
     /**
