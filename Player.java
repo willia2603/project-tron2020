@@ -85,11 +85,11 @@ public class Player
      * @return true if collision happens, false otherwise.
      */
     public boolean checkCollisionBorder() {
-        Coordinate head = this.snake.getHead();
-        return (head.getX() >= Setting.ARENA_WIDTH 
+        final Coordinate head = this.snake.getHead();
+        return head.getX() >= Setting.ARENA_WIDTH 
                 || head.getX() < 0  
                 ||  head.getY() >= Setting.ARENA_HEIGHT
-                || head.getY() < 0);
+                || head.getY() < 0;
     }
     
     /**

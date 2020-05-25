@@ -1,10 +1,8 @@
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.awt.BorderLayout;
-import java.awt.Graphics;
+
 /**
  * Write a description of class GameFrame here.
  *
@@ -13,25 +11,22 @@ import java.awt.Graphics;
  */
 public class GUI2 extends JFrame
 {   
-    private GamePanel gamePanel;
-    private JPanel gameWinPanel;
-    private JPanel matchWinPanel;
-    private JPanel menuPanel;
     
     /**
      * Constructor for objects of class GameFrame
      */
-    public GUI2(Game game)
+    public GUI2(final Game game)
     {
+        super();
         setTitle("Tron2020");
         setBackground(Color.BLACK);
-        gamePanel = new GamePanel(game);
+        final GamePanel gamePanel = new GamePanel(game);
         game.registerListener(new GameListener() {
-            public void beforeMatch(Match match) {
+            public void beforeMatch(final Match match) {
                 GUI2.this.addKeyListener(new Key(match));
             }
             
-            public void afterMatch(Player player, Match match) {
+            public void afterMatch(final Player player, final Match match) {
                 if (player == null) {
                     JOptionPane.showMessageDialog(null, "Draw");
                 } else {
@@ -39,7 +34,7 @@ public class GUI2 extends JFrame
                 }
             }
             
-            public void afterGame(Player gameWinner) {
+            public void afterGame(final Player gameWinner) {
                 JOptionPane.showMessageDialog(null, gameWinner.toString() + " won the game");
             }
         });
@@ -59,14 +54,14 @@ public class GUI2 extends JFrame
     
     private class Key implements KeyListener {
         private final Match match;
-        public Key(Match match) {
+        public Key(final Match match) {
             this.match = match;
         }
         
-        public void keyPressed(KeyEvent event) {
-            int key = event.getKeyCode();
-            Player p1 = match.returnPlayers().get(0);
-            Player p2 = match.returnPlayers().get(1);
+        public void keyPressed(final KeyEvent event) {
+            final int key = event.getKeyCode();
+            final Player p1 = match.returnPlayers().get(0);
+            final Player p2 = match.returnPlayers().get(1);
             
             if (key == KeyEvent.VK_LEFT) {
                 match.addCommand(new TurnLeft(p2));
@@ -81,8 +76,14 @@ public class GUI2 extends JFrame
             }
             
         }
-        public void keyReleased(KeyEvent event) {}
-        public void keyTyped(KeyEvent event) {}
+        
+        public void keyReleased(final KeyEvent event) {
+            //does nothing. Left intentionally empty.
+        }
+        
+        public void keyTyped(final KeyEvent event) {
+            //does nothing. Left intentionally empty.
+        }
     }
 
 

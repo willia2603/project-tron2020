@@ -1,9 +1,7 @@
 import java.util.ArrayList;
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
-import java.awt.BorderLayout;
-import java.awt.Graphics;
+
 /**
  * Write a description of class GamePanel here.
  *
@@ -13,10 +11,11 @@ import java.awt.Graphics;
 public class GamePanel extends JPanel
 {   
     
-    public GamePanel(Game game) {
-        JComponent canvas = new Canvas(game);
+    public GamePanel(final Game game) {
+        super();
+        final JComponent canvas = new Canvas(game);
         //TopPanel bcs it implements matchListener --> allows me to have it as a listener
-        TopPanel topPanel = new TopPanel(game);
+        final TopPanel topPanel = new TopPanel(game);
         
         //topPanel.setBorder(BorderFactory.createEmptyBorder(-5,0,0,0));
         //canvas.setBorder(BorderFactory.createEmptyBorder(-5,0,0,0));
@@ -32,28 +31,31 @@ public class GamePanel extends JPanel
         private final static int WIDTH = 800;
         private final static int HEIGHT = 600;
         private Match match;
-        public Canvas(Game game) {
+        public Canvas(final Game game) {
             //setBackground(Color.RED);
+            super();
             
             game.registerListener(new GameListener() {
-                public void beforeMatch(Match match) {
+                public void beforeMatch(final Match match) {
                     Canvas.this.match = match;
                     match.registerListener(new MatchListener() {
-                        public void beforeTick(Match match) {
+                        public void beforeTick(final Match match) {
                             try {
                                 Thread.sleep(100);
-                            } catch (Exception e) {
+                            } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
                             repaint();
                         }          
                     });
                 }
-                public void afterMatch(Player player, Match match) {
-                    
+                public void afterMatch(final Player player, final Match match) {
+                    //does nothing. Left intentionally empty.
                 }
                 
-                public void afterGame(Player gameWinner) {}
+                public void afterGame(final Player gameWinner) {
+                    //does nothing. Left intentionally empty.
+                }
             });
             setVisible(true);
         }
@@ -62,11 +64,11 @@ public class GamePanel extends JPanel
             return new Dimension(Canvas.WIDTH, Canvas.HEIGHT);
         }
         
-        public void paintComponent(Graphics g) {
+        public void paintComponent(final Graphics g) {
             //g.setColor(Color.RED);
             //g.fillRect(0, 0, Canvas.WIDTH, Canvas.HEIGHT);
             //draw horizontal lines
-            Color gridColor = Color.decode("#DCDCDC");
+            final Color gridColor = Color.decode("#DCDCDC");
             g.setColor(gridColor);
             //draw line every 10 pixels
             for (int i = 0; i < Setting.ARENA_HEIGHT; i++) {
@@ -91,34 +93,34 @@ public class GamePanel extends JPanel
             
             //draw players
             //TODO: change color for each player
-            ArrayList<Player> players = match.returnPlayers();
-            Player p1 = players.get(0);
-            Color p1Color = Color.decode("#03C9F0");
+            final ArrayList<Player> players = match.returnPlayers();
+            final Player p1 = players.get(0);
+            final Color p1Color = Color.decode("#03C9F0");
             g.setColor(p1Color);
             //iterator to 
-            for (Coordinate c : p1.getSnakeCopy().getBody()) {
+            for (final Coordinate c : p1.getSnakeCopy().getBody()) {
                 //fillRect topLeftX, topLeftY,bottomRightX, bottomRightY
                 g.fillRect(
                 //
                 //1 : 10 --> 1 Arena --> move 1 * 10 each time --> map from arena --> pixels
                 c.getX() * (Canvas.WIDTH / Setting.ARENA_WIDTH), 
                 c.getY() * (Canvas.HEIGHT / Setting.ARENA_HEIGHT), 
-                (Canvas.WIDTH / Setting.ARENA_WIDTH), 
-                (Canvas.HEIGHT / Setting.ARENA_HEIGHT)
+                Canvas.WIDTH / Setting.ARENA_WIDTH, 
+                Canvas.HEIGHT / Setting.ARENA_HEIGHT
                 );
             }
-            Color p2Color = Color.decode("#E500FF");
+            final Color p2Color = Color.decode("#E500FF");
             g.setColor(p2Color);
-            Player p2 = players.get(1);
-            for (Coordinate c : p2.getSnakeCopy().getBody()) {
+            final Player p2 = players.get(1);
+            for (final Coordinate c : p2.getSnakeCopy().getBody()) {
                 //fillRect topLeftX, topLeftY,bottomRightX, bottomRightY
                 g.fillRect(
                 //
                 //1 : 10 --> 1 Arena --> move 1 * 10 each time --> map from arena --> pixels
                 c.getX() * (Canvas.WIDTH / Setting.ARENA_WIDTH), 
                 c.getY() * (Canvas.HEIGHT / Setting.ARENA_HEIGHT), 
-                (Canvas.WIDTH / Setting.ARENA_WIDTH), 
-                (Canvas.HEIGHT / Setting.ARENA_HEIGHT)
+                Canvas.WIDTH / Setting.ARENA_WIDTH, 
+                Canvas.HEIGHT / Setting.ARENA_HEIGHT
                 );
             }
         }
@@ -129,17 +131,18 @@ public class GamePanel extends JPanel
         private JLabel p1Label;
         private JLabel p2Label;
         
-        public TopPanel(Game game) {
+        public TopPanel(final Game game) {
             //JPanel topPanel = new JPanel(); NO, we are the top panel
             //horizontal space between components
             //maybe change to flow layout???
+            super();
             setLayout(new BorderLayout(20,0));
             //setBackground(Color.GREEN);
             setPreferredSize(new Dimension(800,100));
             //setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5); 
-            JPanel topRightPanel = new JPanel();
-            JPanel topCenterPanel = new JPanel();
-            JPanel topLeftPanel = new JPanel();
+            final JPanel topRightPanel = new JPanel();
+            final JPanel topCenterPanel = new JPanel();
+            final JPanel topLeftPanel = new JPanel();
             
             topRightPanel.setBorder(BorderFactory.createLineBorder(Color.decode("#03C9F0")));
             topCenterPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -150,7 +153,7 @@ public class GamePanel extends JPanel
             p1Label.setHorizontalAlignment(JLabel.CENTER);
             //p1Label.setForeground(Color.RED);
             
-            JLabel titleLabel = new JLabel("TRON 2020");
+            final JLabel titleLabel = new JLabel("TRON 2020");
             titleLabel.setPreferredSize(new Dimension(100,100));
             titleLabel.setHorizontalAlignment(JLabel.CENTER);
             //titleLabel.setForeground(Color.RED);
@@ -179,13 +182,13 @@ public class GamePanel extends JPanel
             
             //register listener
             game.registerListener(new GameListener() {
-                public void beforeMatch(Match match) {
+                public void beforeMatch(final Match match) {
                     match.registerListener(new MatchListener() {
-                        public void beforeTick(Match match) 
+                        public void beforeTick(final Match match) 
                         {
-                            ArrayList<Player> players = match.returnPlayers();
-                            int p1Lives = players.get(0).getLives();
-                            int p2Lives = players.get(1).getLives();
+                            final ArrayList<Player> players = match.returnPlayers();
+                            final int p1Lives = players.get(0).getLives();
+                            final int p2Lives = players.get(1).getLives();
                             //change label of lives according to match
                             p1Label.setText("P1 Lives: " + p1Lives);
                             p2Label.setText("P2 Lives: " + p2Lives);
@@ -193,11 +196,13 @@ public class GamePanel extends JPanel
                         
                     });
                 }
-                public void afterMatch(Player player, Match match) {
-                    
+                public void afterMatch(final Player player, final  Match match) {
+                    //does nothing. Left intentionally empty.
                 }
                 
-                public void afterGame(Player gameWinner) {}
+                public void afterGame(final Player gameWinner) {
+                    //does nothing. Left intentionally empty.
+                }
             
             });
         }

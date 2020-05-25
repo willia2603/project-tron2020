@@ -63,7 +63,7 @@ public class TUI implements MatchListener, GameListener
                 return new TurnRight(player);
 
             case "continue":
-                return new Continue(player);
+                return new Continue();
                 
             default:
                 System.out.println("The commands are: 'right', 'left'");
@@ -196,7 +196,7 @@ public class TUI implements MatchListener, GameListener
         }
     }
     
-    public void afterGame(Player gameWinner) {
+    public void afterGame(final Player gameWinner) {
         System.out.println("The winner is: " + gameWinner.toString());
     }
 }

@@ -62,7 +62,7 @@ public class Coordinate
      * @param graphics the graphic to be used in the Screen class.
      * @param color the color of the rectangles (represent the snake's color).
      */
-    public void draw(Graphics graphics, Color color) {
+    public void draw(final Graphics graphics, final Color color) {
         graphics.setColor(color);
         graphics.fillRect(getX() * 10, getY() * 10, 10, 10);
         graphics.setColor(color);
