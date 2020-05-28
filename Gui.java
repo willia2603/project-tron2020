@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 
 public class Gui extends JFrame {
-    /* default */ final Game game;
+    private final Game game;
 
     /**
      * Constructor for objects of class GameFrame.
