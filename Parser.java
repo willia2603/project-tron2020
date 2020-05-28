@@ -6,28 +6,26 @@ import java.util.Scanner;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Parser
-{
+public class Parser {
     private Scanner reader;
-    
+
     /**
      * Constructor for objects of class Parser.
      */
-    public Parser()
-    {
+    public Parser() {
         reader = new Scanner(System.in);
     }
-    
+
     /**
      * Get commands from user.
+     * 
      * @return array of Strings containing the commands.
      */
-    public String[] getCommand() 
-    {
-        String inputLine;   // will hold the full input line
+    public String[] getCommand() {
+        String inputLine; // will hold the full input line
         String[] words = new String[2];
 
-        System.out.print("> ");     // print prompt
+        System.out.print("> "); // print prompt
 
         inputLine = reader.nextLine();
 
@@ -36,7 +34,7 @@ public class Parser
         if (tokenizer.hasNext()) {
             words[0] = tokenizer.next();
             if (tokenizer.hasNext()) {
-                words[1] = tokenizer.next();      // get second word
+                words[1] = tokenizer.next(); // get second word
                 // note: we just ignore the rest of the input line.
             }
         }

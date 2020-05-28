@@ -6,49 +6,53 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Player
-{
+public class Player {
     private Snake snake;
     private int lives;
     private String name;
 
     /**
      * Constructor for objects of class Player.
+     * 
      * @param name The name of the player.
      */
     public Player(final String name) {
         lives = 3;
         this.name = name;
     }
-    
+
     /**
      * 
      * @param direction The direction fo the snake.
-     * @param init The initial coordinate of the snake.
+     * @param init      The initial coordinate of the snake.
      */
     public void createSnake(final Direction direction, final Coordinate init) {
         this.snake = new Snake(direction, init);
     }
-    //exposing implementation details
-    //make it private. Do it after GUI. Player should not expose snake.
+
+    // exposing implementation details
+    // make it private. Do it after GUI. Player should not expose snake.
     /**
      * Return the snake of the player.
+     * 
      * @return the snake of the player.
      */
     private Snake getSnake() {
         return snake;
     }
-    
+
     /**
      * Return a copy of the snake of the player.
+     * 
      * @return copy of snake of the player.
      */
     public Snake getSnakeCopy() {
         return new Snake(snake);
     }
-    
+
     /**
      * Check if current player collides with another player.
+     * 
      * @param other The other player.
      * @return true if collision happens, false otherwise.
      */
@@ -62,9 +66,10 @@ public class Player
         }
         return false;
     }
-    
+
     /**
      * Check if I collide into myself.
+     * 
      * @return true if collision happens, false otherwise.
      */
     public boolean checkCollisionSelf() {
@@ -79,19 +84,20 @@ public class Player
         }
         return false;
     }
-    
+
     /**
      * Check I collide into border.
+     * 
      * @return true if collision happens, false otherwise.
      */
     public boolean checkCollisionBorder() {
         final Coordinate head = this.snake.getHead();
         return head.getX() >= Setting.ARENA_WIDTH 
-                || head.getX() < 0  
-                ||  head.getY() >= Setting.ARENA_HEIGHT -3
-                || head.getY() < 0;
+            || head.getX() < 0 
+            || head.getY() >= Setting.ARENA_HEIGHT - 3
+            || head.getY() < 0;
     }
-    
+
     /**
      * Compute next position of the player.
      */
@@ -105,43 +111,45 @@ public class Player
     public void turnLeft() {
         this.snake.setDirection(this.snake.getDirection().getLeftDirection());
     }
-    
+
     /**
      * Make player turn right.
      */
     public void turnRight() {
         this.snake.setDirection(this.snake.getDirection().getRightDirection());
     }
-    
+
     /**
      * Remove a life from player.
      */
     public void die() {
-        lives--; 
+        lives--;
     }
-    
+
     /**
      * Get the numbers of lives of a player.
+     * 
      * @return the number of lives of the player.
      */
     public int getLives() {
         return lives;
     }
-    
+
     /**
      * Print the snake of the player.
      */
     public void printSnake() {
         snake.print();
     }
-    
+
     @Override
     /**
      * Return the name of the player.
+     * 
      * @return the name of the player.
      */
     public String toString() {
         return this.name;
     }
-    
+
 }

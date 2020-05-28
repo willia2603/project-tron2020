@@ -15,7 +15,7 @@ public class GameTest {
     Game game = new Game();
     Player p1 = game.getPlayer("Player 1");
     Player p2 = game.getPlayer("Player 2");
-    TUI listener = new TUI();
+    Tui listener = new Tui();
     Command rightP1 = new TurnRight(p1);
     Command rightP2 = new TurnRight(p2);
     Command leftP1 = new TurnLeft(p1);

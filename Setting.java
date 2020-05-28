@@ -6,12 +6,10 @@
  * @version (a version number or a date)
  */
 
-public class Setting
-{   
+public class Setting {
     public static final int ARENA_WIDTH = 80;
     public static final int ARENA_HEIGHT = 60;
     public static final float INITIAL_SPEED = 1;
     public static final float TICK_PER_SECOND = 30;
-    
-    
+
 }
