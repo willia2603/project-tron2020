@@ -79,6 +79,20 @@ public class GamePanel extends JPanel {
         public Dimension getPreferredSize() {
             return new Dimension(Canvas.WIDTH, Canvas.HEIGHT);
         }
+        
+        public void paintPlayer(final Player player, final Color color, final Graphics g) {
+            g.setColor(color);
+
+            for (final Coordinate c : player.getSnakeCopy().getBody()) {
+                // fillRect topLeftX, topLeftY,bottomRightX, bottomRightY
+                g.fillRect(
+                        c.getX() * (Canvas.WIDTH / SettingsHelper.ARENA_WIDTH),
+                        c.getY() * (Canvas.HEIGHT / SettingsHelper.ARENA_HEIGHT), 
+                        Canvas.WIDTH / SettingsHelper.ARENA_WIDTH,
+                        Canvas.HEIGHT / SettingsHelper.ARENA_HEIGHT);
+            }
+            
+        }
 
         /**
          * Paint on canvas.
@@ -90,50 +104,26 @@ public class GamePanel extends JPanel {
             g.setColor(gridColor);
 
             // draw line every 10 pixels
-            for (int i = 0; i < Setting.ARENA_HEIGHT; i++) {
-                g.drawLine(0, i * (Canvas.HEIGHT / Setting.ARENA_HEIGHT), Canvas.WIDTH,
-                        i * (Canvas.HEIGHT / Setting.ARENA_HEIGHT));
+            for (int i = 0; i < SettingsHelper.ARENA_HEIGHT; i++) {
+                g.drawLine(0, i * (Canvas.HEIGHT / SettingsHelper.ARENA_HEIGHT), Canvas.WIDTH,
+                        i * (Canvas.HEIGHT / SettingsHelper.ARENA_HEIGHT));
             }
 
             // draw vertical lines
             // draw line every 10 pixels
-            for (int i = 0; i < Setting.ARENA_WIDTH; i++) {
+            for (int i = 0; i < SettingsHelper.ARENA_WIDTH; i++) {
                 g.drawLine(i * (
-                    Canvas.WIDTH / Setting.ARENA_WIDTH), 
+                    Canvas.WIDTH / SettingsHelper.ARENA_WIDTH), 
                     0, 
-                    i * (Canvas.WIDTH / Setting.ARENA_WIDTH),
+                    i * (Canvas.WIDTH / SettingsHelper.ARENA_WIDTH),
                     Canvas.HEIGHT);
             }
 
             // draw players
             final ArrayList<Player> players = match.returnPlayers();
-            final Player p1 = players.get(0);
-            final Color p1Color = Color.decode("#03C9F0");
-            g.setColor(p1Color);
-
-            for (final Coordinate c : p1.getSnakeCopy().getBody()) {
-                // fillRect topLeftX, topLeftY,bottomRightX, bottomRightY
-                g.fillRect(
-                        c.getX() * (Canvas.WIDTH / Setting.ARENA_WIDTH),
-                        c.getY() * (Canvas.HEIGHT / Setting.ARENA_HEIGHT), 
-                        Canvas.WIDTH / Setting.ARENA_WIDTH,
-                        Canvas.HEIGHT / Setting.ARENA_HEIGHT);
-            }
-
-            final Color p2Color = Color.decode("#E500FF");
-            g.setColor(p2Color);
-            final Player p2 = players.get(1);
-
-            for (final Coordinate c : p2.getSnakeCopy().getBody()) {
-                // fillRect topLeftX, topLeftY,bottomRightX, bottomRightY
-                g.fillRect(
-                        //
-                        // 1 : 10 --> 1 Arena --> move 1 * 10 each time --> map from arena -> pixels
-                        c.getX() * (Canvas.WIDTH / Setting.ARENA_WIDTH),
-                        c.getY() * (Canvas.HEIGHT / Setting.ARENA_HEIGHT), 
-                        Canvas.WIDTH / Setting.ARENA_WIDTH,
-                        Canvas.HEIGHT / Setting.ARENA_HEIGHT);
-            }
+            paintPlayer(players.get(0), Color.decode("#03C9F0"), g);
+            paintPlayer(players.get(1), Color.decode("#E500FF"), g);
+            
         }
 
     }

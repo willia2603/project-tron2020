@@ -24,10 +24,10 @@ public class Match {
         this.commands = new ArrayList<>();
         this.p1 = p1;
         this.p2 = p2;
-        final Coordinate p1Coord = new Coordinate(Setting.ARENA_WIDTH / 5, 
-            Setting.ARENA_HEIGHT / 2);
-        final Coordinate p2Coord = new Coordinate(4 * (Setting.ARENA_WIDTH / 5), 
-            Setting.ARENA_HEIGHT / 2);
+        final Coordinate p1Coord = new Coordinate(SettingsHelper.ARENA_WIDTH / 5, 
+            SettingsHelper.ARENA_HEIGHT / 2);
+        final Coordinate p2Coord = new Coordinate(4 * (SettingsHelper.ARENA_WIDTH / 5), 
+            SettingsHelper.ARENA_HEIGHT / 2);
         final Direction p1Dir = new Right();
         final Direction p2Dir = new Left();
         p1.createSnake(p1Dir, p1Coord);

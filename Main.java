@@ -18,9 +18,8 @@ public class Main {
      * Run gui.
      */
     public static void runGui() {
-        final Game game = new Game();
-        final Gui gui = new Gui(game);
-        game.play();
+        final Gui gui = new Gui();
+        gui.start();
     }
     
     /**

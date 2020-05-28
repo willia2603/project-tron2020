@@ -92,9 +92,9 @@ public class Player {
      */
     public boolean checkCollisionBorder() {
         final Coordinate head = this.snake.getHead();
-        return head.getX() >= Setting.ARENA_WIDTH 
+        return head.getX() >= SettingsHelper.ARENA_WIDTH 
             || head.getX() < 0 
-            || head.getY() >= Setting.ARENA_HEIGHT - 3
+            || head.getY() >= SettingsHelper.ARENA_HEIGHT - 3
             || head.getY() < 0;
     }
 

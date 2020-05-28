@@ -8,14 +8,14 @@ import javax.swing.JOptionPane;
 
 
 public class Gui extends JFrame {
+    /* default */ final Game game;
 
     /**
      * Constructor for objects of class GameFrame.
-     * 
-     * @param game The game.
      */
-    public Gui(final Game game) {
+    public Gui() {
         super();
+        game = new Game();
         setTitle("Tron2020");
         setBackground(Color.BLACK);
         final GamePanel gamePanel = new GamePanel(game);
@@ -106,6 +106,13 @@ public class Gui extends JFrame {
         public void keyTyped(final KeyEvent event) {
             // does nothing. Left intentionally empty.
         }
+    }
+    
+    /**
+     * Start Gui.
+     */
+    public void start() {
+        this.game.play();
     }
 
 }

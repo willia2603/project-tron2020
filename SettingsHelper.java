@@ -6,7 +6,7 @@
  * @version (a version number or a date)
  */
 
-public class Setting {
+public class SettingsHelper {
     public static final int ARENA_WIDTH = 80;
     public static final int ARENA_HEIGHT = 60;
     public static final float INITIAL_SPEED = 1;
