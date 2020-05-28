@@ -15,18 +15,20 @@ public class Main {
     }
 
     /**
-     * SetUp and run.
+     * Run gui.
      */
-    public static void run() {
-
+    public static void runGui() {
         final Game game = new Game();
         final Gui gui = new Gui(game);
         game.play();
-
-        // Match match = new Match(new Player("P1"), new Player("P2"));
-        // GameFrame frame = new GameFrame(match);
-        // match.beforeTick();
-
+    }
+    
+    /**
+     * Run tui.
+     */
+    public static void runTui() {
+        final Tui tui = new Tui();
+        tui.start();
     }
 
     /**
@@ -34,6 +36,15 @@ public class Main {
      * @param arguments The command line arguments.
      */
     public static void main(final String[] arguments) {
-        Main.run();
+        if (arguments.length == 0) {
+            System.out.println("accepted arguments: tui or gui");
+        } else if (arguments[0].equals("gui")) {
+            Main.runGui();
+        } else if (arguments[0].equals("tui")) {
+            Main.runTui();
+        } else {
+            System.out.println("argument not valid");
+        }
+        
     }
 }
