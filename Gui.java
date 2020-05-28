@@ -52,6 +52,7 @@ public class Gui extends JFrame {
                         options[1]);
 
                 if (result == 0) {
+                    Gui.this.dispose();
                     Main.runGui();
                 } else {
                     Gui.this.dispatchEvent(new WindowEvent(Gui.this, WindowEvent.WINDOW_CLOSING));
