@@ -88,7 +88,7 @@ public class Player
         final Coordinate head = this.snake.getHead();
         return head.getX() >= Setting.ARENA_WIDTH 
                 || head.getX() < 0  
-                ||  head.getY() >= Setting.ARENA_HEIGHT
+                ||  head.getY() >= Setting.ARENA_HEIGHT -3
                 || head.getY() < 0;
     }
     

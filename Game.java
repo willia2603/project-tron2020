@@ -138,4 +138,8 @@ public class Game
             return null;
         }
     }
+    
+    public void restartGame() {
+        //
+    }
 }

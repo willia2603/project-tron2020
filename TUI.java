@@ -49,13 +49,15 @@ public class TUI implements MatchListener, GameListener
      * @param player the player that needs to act.
      * @return command associated with userCommand.
      */
-    private Command processCommandMatch(String userCommand, final Player player) {
+    private Command processCommandMatch(final String userCommand, final Player player) {
+        String command = userCommand;
+        
         //if one of the two words is null, make snake go straight
-        if (userCommand == null) {
-            userCommand = "continue";
+        if (command == null) {
+            command = "continue";
         }
         
-        switch (userCommand) {
+        switch (command) {
             case "left":
                 return new TurnLeft(player);
 
