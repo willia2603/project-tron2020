@@ -16,19 +16,33 @@ public class GamePanel extends JPanel {
      */
     public GamePanel(final Game game) {
         super();
-        final JComponent canvas = new Canvas(game);
         // TopPanel bcs it implements matchListener --> allows me to have it as a
         // listener
-        final TopPanel topPanel = new TopPanel(game);
+        createTopPanel(game);
+        createCanvas(game);
 
-        // topPanel.setBorder(BorderFactory.createEmptyBorder(-5,0,0,0));
-        // canvas.setBorder(BorderFactory.createEmptyBorder(-5,0,0,0));
-
-        add(topPanel);
-        add(canvas);
-        // add topPanel to match listeners to change lives number of each player
         setVisible(true);
 
+    }
+    
+    /**
+     * Create and add canvas.
+     * 
+     * @param game The current game.
+     */
+    public void createCanvas(final Game game) {
+        final JComponent canvas = new Canvas(game);
+        add(canvas);
+    }
+    
+    /**
+     * Create and add top panel.
+     * 
+     * @param game The current game.
+     */
+    public void createTopPanel(final Game game) {
+        final TopPanel topPanel = new TopPanel(game);
+        add(topPanel);
     }
 
     // canvas only draws
@@ -127,51 +141,69 @@ public class GamePanel extends JPanel {
         }
 
     }
-
+    //static?
     // matchListener to show decreasing of lives
+    
     private class TopPanel extends JPanel {
         private JLabel p1Label;
         private JLabel p2Label;
-
+        
+        /**
+         * Constructor for TopPanel.
+         * 
+         * @param game The current game.
+         */
         public TopPanel(final Game game) {
             super();
+            setUpGamePanel();
+            
+            // register listener
+            addListeners(game);
+        }
+        
+        /**
+         * Set up each top panel part.
+         * 
+         * @param b The color of the border.
+         * @param t The text of the label.
+         * @param pos The position of the panel.
+         * @param p The name of the player.
+         */
+        public void setUpPanel(final Color b, final String t, final String pos, final String p) {
+            final JPanel panel = new JPanel();
+            panel.setBorder(BorderFactory.createLineBorder(b));
+            final JLabel label = new JLabel(t);
+            label.setPreferredSize(new Dimension(100, 100));
+            label.setHorizontalAlignment(JLabel.CENTER);
+            if ("P2 Lives".equals(p)) {
+                this.p2Label = label;
+            } else if ("P1 Lives".equals(p)) {
+                this.p1Label = label;
+            }
+            panel.add(label);
+            panel.setPreferredSize(new Dimension(200, 100));
+            add(panel, pos);
+        
+        }
+        
+        /**
+         * Setup GamePanel.
+         */
+        public void setUpGamePanel() {
             setLayout(new BorderLayout(20, 0));
             setPreferredSize(new Dimension(800, 100));
-
-            final JPanel topRightPanel = new JPanel();
-            final JPanel topCenterPanel = new JPanel();
-            final JPanel topLeftPanel = new JPanel();
-
-            topRightPanel.setBorder(BorderFactory.createLineBorder(Color.decode("#03C9F0")));
-            topCenterPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            topLeftPanel.setBorder(BorderFactory.createLineBorder(Color.decode("#E500FF")));
-
-            p1Label = new JLabel("P1 Lives");
-            p1Label.setPreferredSize(new Dimension(100, 100));
-            p1Label.setHorizontalAlignment(JLabel.CENTER);
-
-            final JLabel titleLabel = new JLabel("TRON 2020");
-            titleLabel.setPreferredSize(new Dimension(100, 100));
-            titleLabel.setHorizontalAlignment(JLabel.CENTER);
-
-            p2Label = new JLabel("P2 Lives");
-            p2Label.setPreferredSize(new Dimension(100, 100));
-            p2Label.setHorizontalAlignment(JLabel.CENTER);
-
-            topRightPanel.add(p1Label);
-            topLeftPanel.add(p2Label);
-            topCenterPanel.add(titleLabel);
-
-            topRightPanel.setPreferredSize(new Dimension(200, 100));
-            topCenterPanel.setPreferredSize(new Dimension(200, 100));
-            topLeftPanel.setPreferredSize(new Dimension(200, 100));
-
-            add(topRightPanel, BorderLayout.WEST);
-            add(topCenterPanel, BorderLayout.CENTER);
-            add(topLeftPanel, BorderLayout.EAST);
+            setUpPanel(Color.decode("#E500FF"), "P2 Lives", BorderLayout.EAST, "P2 Lives");
+            setUpPanel(Color.BLACK, "TRON 2020", BorderLayout.CENTER, "");
+            setUpPanel(Color.decode("#03C9F0"), "P1 Lives", BorderLayout.WEST, "P1 Lives");
             setVisible(true);
-
-            // register listener
+        }
+        
+        /**
+         * Add Listeners.
+         * 
+         * @param game The current game.
+         */
+        public void addListeners(final Game game) {
             game.registerListener(new GameListener() {
                 public void beforeMatch(final Match match) {
                     match.registerListener(new MatchListener() {
@@ -196,7 +228,7 @@ public class GamePanel extends JPanel {
                 }
 
             });
+        
         }
-
     }
 }
