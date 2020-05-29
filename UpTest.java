@@ -10,7 +10,7 @@ import org.junit.Test;
  */
 public class UpTest {
 
-    private Down u;
+    private Up u;
 
     /**
      * Sets up the test fixture.
@@ -20,7 +20,7 @@ public class UpTest {
     @Before
     public void setUp()
     {
-        u = new Down();
+        u = new Up();
     }
 
     @Test
