@@ -34,13 +34,24 @@ public class DownTest {
     }
 
     @Test
-    public void actionOnX() {
+    public void testActionOnX() {
         assertEquals(0, d.actionOnX());
     }
 
     @Test
-    public void actionOnY() {
+    public void testActionOnY() {
         assertEquals(1, d.actionOnY());
     }
 
+    @Test
+    public void testGetLeftDirection() {
+        assertTrue(d.getLeftDirection() instanceof Right);
+        assertFalse(d.getLeftDirection() instanceof Left);
+    }
+
+    @Test
+    public void testGetRightDirection() {
+        assertTrue(d.getRightDirection() instanceof Left);
+        assertFalse(d.getRightDirection() instanceof Right);
+    }
 }

@@ -105,7 +105,7 @@ public class Game {
      */
     public Player play() {
         while (this.continueGame()) {
-            final Match match = new Match(this.p1, this.p2);
+            final Match match = new Match(p1, p2);
             beforeMatch(match);
             final Player winner = match.play();
 

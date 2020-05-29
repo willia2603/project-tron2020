@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import static org.junit.Assert.*;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -69,10 +68,6 @@ public class PlayerTest {
         assertTrue(p1.checkCollision(p1));
         assertTrue(p2.checkCollision(p3));
         assertTrue(p3.checkCollision(p2));
-        // p3.Act("left");
-        // p4.Act("right");
-        // assertTrue(p3.checkCollision(p4));
-        // assertTrue(p4.checkCollision(p3));
     }
 
     @Test
@@ -82,7 +77,7 @@ public class PlayerTest {
 
     @Test
     public void testNextPosition() {
-        int newHeadX = p1.getSnakeCopy().getHead().getX() + 0;
+        int newHeadX = p1.getSnakeCopy().getHead().getX();
         int newHeadY = p1.getSnakeCopy().getHead().getY() - 1;
         Coordinate newHead = new Coordinate(newHeadX, newHeadY);
         p1.nextPosition();
@@ -92,10 +87,6 @@ public class PlayerTest {
 
     @Test
     public void testTurnLeft() {
-        Direction dir1 = new Left();
-        Direction dir5 = new Right();
-        Direction dir6 = new Up();
-        Direction dir7 = new Down();
         p1.turnLeft();
         p5.turnLeft();
         p6.turnLeft();
@@ -108,10 +99,6 @@ public class PlayerTest {
 
     @Test
     public void testTurnRight() {
-        Direction dir1 = new Right();
-        Direction dir5 = new Left();
-        Direction dir6 = new Down();
-        Direction dir7 = new Up();
         p1.turnRight();
         p5.turnRight();
         p6.turnRight();
