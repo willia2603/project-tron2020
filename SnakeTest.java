@@ -1,8 +1,5 @@
-
 import java.util.ArrayList;
 import static org.junit.Assert.*;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -67,8 +64,7 @@ public class SnakeTest {
         ArrayList<Coordinate> body1 = s1.getBody();
         ArrayList<Coordinate> body2 = s2.getBody();
         for (int i = 0; i < body1.size(); i++) {
-            assertTrue(body1.get(i).equals(body2.get(i)));
+            assertEquals(body1.get(i), body2.get(i));
         }
-        //assertEquals(body1, body2);
     }
 }
