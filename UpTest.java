@@ -1,5 +1,4 @@
 import static org.junit.Assert.*;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,16 +8,9 @@ import org.junit.Test;
  * @author  (your name)
  * @version (a version number or a date)
  */
-public class DownTest {
+public class UpTest {
 
-    private Down d;
-
-    /**
-     * Default constructor for test class DownTest
-     */
-    public DownTest()
-    {
-    }
+    private Down u;
 
     /**
      * Sets up the test fixture.
@@ -28,28 +20,28 @@ public class DownTest {
     @Before
     public void setUp()
     {
-        d = new Down();
+        u = new Down();
     }
 
     @Test
     public void testActionOnX() {
-        assertEquals(0, d.actionOnX());
+        assertEquals(0, u.actionOnX());
     }
 
     @Test
     public void testActionOnY() {
-        assertEquals(1, d.actionOnY());
+        assertEquals(1, u.actionOnY());
     }
 
     @Test
     public void testGetLeftDirection() {
-        assertTrue(d.getLeftDirection() instanceof Right);
-        assertFalse(d.getLeftDirection() instanceof Left);
+        assertTrue(u.getLeftDirection() instanceof Left);
+        assertFalse(u.getLeftDirection() instanceof Right);
     }
 
     @Test
     public void testGetRightDirection() {
-        assertTrue(d.getRightDirection() instanceof Left);
-        assertFalse(d.getRightDirection() instanceof Right);
+        assertTrue(u.getRightDirection() instanceof Right);
+        assertFalse(u.getRightDirection() instanceof Left);
     }
 }

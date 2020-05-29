@@ -1,8 +1,5 @@
 import java.util.ArrayList;
-
 import static org.junit.Assert.*;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -16,16 +13,20 @@ public class GameTest {
     Player p1 = game.getPlayer("Player 1");
     Player p2 = game.getPlayer("Player 2");
     Tui listener = new Tui();
-    Command rightP1 = new TurnRight(p1);
-    Command rightP2 = new TurnRight(p2);
-    Command leftP1 = new TurnLeft(p1);
-    Command leftP2 = new TurnLeft(p2);
     ArrayList<GameListener> listeners = new ArrayList<>();
+
     @Test
     public void testRegisterListenerPositive() {
         game.registerListener(listener);
         listeners.add(listener);
         assertEquals(listeners.get(0), game.returnListeners().get(0));
+    }
+
+    @Test
+    public void testRegisterListenerNegative() {
+        game.registerListener(listener);
+        listeners.add(listener);
+        assertNull(listeners.get(1));
     }
     
     @Test
@@ -39,10 +40,16 @@ public class GameTest {
     
     @Test
     public void testAlive() {
-        game.alive(p1);
         Player p1 = game.getPlayer("Player 1");
+        game.alive(p1);
         Player p2 = game.getPlayer("Player 2");
         assertEquals(2, p2.getLives());
+        game.alive(p2);
+        assertEquals(2, p1.getLives());
+        game.alive(p2);
+        assertEquals(1, p1.getLives());
+        game.alive(p2);
+        assertEquals(0, p1.getLives());
     }
     
     @Test
@@ -65,7 +72,12 @@ public class GameTest {
     public void testReturnListeners() {
         assertEquals(listeners, game.returnListeners());
     }
-    
-    
-   
+
+    @Test
+    public void testGetPlayer() {
+        assertEquals(game.getPlayer("Player 1"), p1);
+        assertEquals(game.getPlayer("Player 2"), p2);
+        assertNotEquals(game.getPlayer("Player 2"), p1);
+        assertNotEquals(game.getPlayer("Player 1"), p2);
+    }
 }

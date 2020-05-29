@@ -1,7 +1,4 @@
-
-
 import static org.junit.Assert.*;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -43,13 +40,15 @@ public class LeftTest {
         assertEquals(0, l.actionOnY());
     }
 
-    /**
-     * Tears down the test fixture.
-     *
-     * Called after every test case method.
-     */
-    @After
-    public void tearDown()
-    {
+    @Test
+    public void testGetLeftDirection() {
+        assertTrue(l.getLeftDirection() instanceof Down);
+        assertFalse(l.getLeftDirection() instanceof Left);
+    }
+
+    @Test
+    public void testGetRightDirection() {
+        assertTrue(l.getRightDirection() instanceof Up);
+        assertFalse(l.getRightDirection() instanceof Right);
     }
 }

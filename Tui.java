@@ -131,8 +131,6 @@ public class Tui implements MatchListener, GameListener {
 
     /**
      * Read the user commands when playing the match.
-     * 
-     * @param the current match.
      */
     private void readMatchCommand(final Match match) {
         final ArrayList<Player> players = match.returnPlayers();

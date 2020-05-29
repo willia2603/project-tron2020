@@ -74,7 +74,7 @@ public class Gui extends JFrame {
         setVisible(true);
     }
 
-    private class Key implements KeyListener {
+    private static class Key implements KeyListener {
         private final Match match;
 
         public Key(final Match match) {

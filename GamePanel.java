@@ -46,7 +46,7 @@ public class GamePanel extends JPanel {
     }
 
     // canvas only draws
-    private class Canvas extends JComponent {
+    private static class Canvas extends JComponent {
         private static final int WIDTH = 800;
         private static final int HEIGHT = 600;
         private Match match;
@@ -144,7 +144,7 @@ public class GamePanel extends JPanel {
     //static?
     // matchListener to show decreasing of lives
     
-    private class TopPanel extends JPanel {
+    private static class TopPanel extends JPanel {
         private JLabel p1Label;
         private JLabel p2Label;
         

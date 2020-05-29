@@ -58,7 +58,7 @@ public class Match {
      * @return list of players.
      */
     public ArrayList<Player> returnPlayers() {
-        final ArrayList players = new ArrayList();
+        final ArrayList<Player> players = new ArrayList<>();
         players.add(p1);
         players.add(p2);
         return players;
@@ -76,7 +76,7 @@ public class Match {
      * Check if players collides.
      * 
      * @return -1 both players die, 1 first player dies, 2 first player dies, 0 no
-     *         collsion.
+     *         collision.
      */
     protected int checkCollision() {
         // need border of game and check player doesn't collide into it.
@@ -109,7 +109,7 @@ public class Match {
      * Notify listeners and set player direction according to user string.
      */
     public void beforeTick() {
-        // notify listeners when play is callled
+        // notify listeners when play is called
         for (final MatchListener listener : listeners) {
             listener.beforeTick(this);
         }
@@ -130,9 +130,7 @@ public class Match {
         // update snake
         this.updateSnake();
 
-        final int result = this.checkCollision();
-
-        return result;
+        return this.checkCollision();
     }
 
     /**

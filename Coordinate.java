@@ -41,12 +41,6 @@ public class Coordinate {
     }
 
     @Override
-    /**
-     * Check if two coordinates have the same values.
-     * 
-     * @param other The other coordinate.
-     * @return true if the value is the same, false otherwise.
-     */
     public boolean equals(final Object o) {
         if (o == this) {
             return true;

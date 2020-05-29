@@ -143,11 +143,6 @@ public class Player {
     }
 
     @Override
-    /**
-     * Return the name of the player.
-     * 
-     * @return the name of the player.
-     */
     public String toString() {
         return this.name;
     }
